@@ -9,3 +9,7 @@ src/Backend/bin/*
 src/Frontend/bin
 
 src/Frontend/bin/*
+
+src/Database/bin
+
+src/Database/bin/*
