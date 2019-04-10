@@ -1,0 +1,11 @@
+.idea
+
+.idea/*
+
+src/Backend/bin
+
+src/Backend/bin/*
+
+src/Frontend/bin
+
+src/Frontend/bin/*
