@@ -1,0 +1,14 @@
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Backend.deps.json
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Backend.runtimeconfig.json
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Backend.runtimeconfig.dev.json
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Backend.dll
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Backend.pdb
+D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.csprojAssemblyReference.cache
+D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.csproj.CoreCompileInputs.cache
+D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.RazorAssemblyInfo.cache
+D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.RazorAssemblyInfo.cs
+D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.AssemblyInfoInputs.cache
+D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.AssemblyInfo.cs
+D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.RazorTargetAssemblyInfo.cache
+D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.dll
+D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.pdb
