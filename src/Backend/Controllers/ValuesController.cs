@@ -16,27 +16,26 @@ namespace Backend.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            /*using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = new ApplicationContext())
             {
-                // создаем два объекта User
-                User user1 = new User { Name = "Tom", Age = 33 };
+                Console.WriteLine(db.Users.ToString());
+                /*User user1 = new User { Name = "Tom", Age = 33 };
                 User user2 = new User { Name = "Alice", Age = 26 };
  
-                // добавляем их в бд
                 db.Users.Add(user1);
                 db.Users.Add(user2);
                 db.SaveChanges();
                 Console.WriteLine("Объекты успешно сохранены");
  
-                // получаем объекты из бд и выводим на консоль
                 var users = db.Users.ToList();
                 Console.WriteLine("Список объектов:");
                 foreach (User u in users)
                 {
                     Console.WriteLine($"{u.Id}.{u.Name} - {u.Age}");
-                }
-            }*/
-            return new string[] { "value1", "value2" };
+                }*/
+            }
+
+            return new string[] {"value1", "value2"};
         }
 
         // GET api/values/5

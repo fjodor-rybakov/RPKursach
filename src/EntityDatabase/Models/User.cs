@@ -11,6 +11,7 @@ namespace EntityDatabase.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string PaymentCard { get; set; }
-        public string RoleId { get; set; }
+        
+        public Role Role { get; set; }
     }
 }

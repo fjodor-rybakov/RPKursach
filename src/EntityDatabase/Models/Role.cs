@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityDatabase.Models
@@ -7,5 +8,7 @@ namespace EntityDatabase.Models
     {
         public int Id { get; set; }
         public string RoleName { get; set; }
+        
+        public List<User> Users { get; set; }
     }
 }

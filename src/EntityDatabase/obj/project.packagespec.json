@@ -36,6 +36,14 @@
           "target": "Package",
           "version": "[2.2.4, )"
         },
+        "Microsoft.Extensions.Configuration.FileExtensions": {
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
+        "Microsoft.Extensions.Configuration.Json": {
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
         "NETStandard.Library": {
           "suppressParent": "All",
           "target": "Package",
