@@ -1,0 +1,9 @@
+D:\RPKursach\src\EntityDatabase\bin\Debug\netstandard2.0\EntityDatabase.deps.json
+D:\RPKursach\src\EntityDatabase\bin\Debug\netstandard2.0\EntityDatabase.dll
+D:\RPKursach\src\EntityDatabase\bin\Debug\netstandard2.0\EntityDatabase.pdb
+D:\RPKursach\src\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.csprojAssemblyReference.cache
+D:\RPKursach\src\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.csproj.CoreCompileInputs.cache
+D:\RPKursach\src\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.AssemblyInfoInputs.cache
+D:\RPKursach\src\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.AssemblyInfo.cs
+D:\RPKursach\src\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.dll
+D:\RPKursach\src\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.pdb

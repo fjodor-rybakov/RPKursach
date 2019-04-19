@@ -12,3 +12,6 @@ D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.AssemblyInfo.cs
 D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.RazorTargetAssemblyInfo.cache
 D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.dll
 D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.pdb
+D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.csproj.CopyComplete
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\EntityDatabase.dll
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\EntityDatabase.pdb
