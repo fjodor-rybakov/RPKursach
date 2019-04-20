@@ -6,10 +6,10 @@ src/Backend/bin
 
 src/Backend/bin/*
 
-src/Frontend/bin
+src/EntityDatabase/bin
 
-src/Frontend/bin/*
+src/EntityDatabase/bin/*
 
-src/Database/bin
+src/ApiErrors/bin
 
-src/Database/bin/*
+src/ApiErrors/bin/*
