@@ -3,12 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityDatabase.Models
 {
-    [Table("category")]
-    public class Category
+    [Table("basket")]
+    public class Basket
     {
         public int Id { get; set; }
-        public string CategoryName { get; set; }
         
-        public List<Product> Products { get; set; }
+        public Product Product { get; set; }
+        
+        public List<User> Users { get; set; }
     }
 }

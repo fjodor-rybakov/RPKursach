@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityDatabase.Models
@@ -7,8 +8,11 @@ namespace EntityDatabase.Models
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
-        public int CompanyId { get; set; }
         public double Price { get; set; }
-        public int CategoryId { get; set; }
+        
+        public Company Company { get; set; }
+        public Category Category { get; set; }
+        
+        public List<Basket> Baskets { get; set; }
     }
 }

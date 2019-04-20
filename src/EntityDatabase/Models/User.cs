@@ -12,6 +12,7 @@ namespace EntityDatabase.Models
         public string Password { get; set; }
         public string PaymentCard { get; set; }
         
+        public Basket Basket { get; set; }
         public Role Role { get; set; }
     }
 }

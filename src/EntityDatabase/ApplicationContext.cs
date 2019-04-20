@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using EntityDatabase.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -6,11 +7,11 @@ namespace EntityDatabase
 {
     public sealed class ApplicationContext : DbContext
     {
-        public DbSet<Models.User> Users { get; set; }
-        public DbSet<Models.Company> Companies { get; set; }
-        public DbSet<Models.Product> Products { get; set; }
-        public DbSet<Models.Role> Roles { get; set; }
-        public DbSet<Models.Category> Categories { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public ApplicationContext()
         {
@@ -19,8 +20,8 @@ namespace EntityDatabase
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Models.Role>().HasData(
-                new Models.Role {Id = 1, RoleName = "Admin"}, new Models.Role {Id = 2, RoleName = "Customer"}
+            modelBuilder.Entity<Role>().HasData(
+                new Role {Id = 1, RoleName = "Admin"}, new Role {Id = 2, RoleName = "Customer"}
             );
             base.OnModelCreating(modelBuilder);
         }
