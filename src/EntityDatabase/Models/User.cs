@@ -1,8 +1,8 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityDatabase.Models
 {
-    [Table("user")]
     public class User
     {
         public int Id { get; set; }
@@ -12,7 +12,7 @@ namespace EntityDatabase.Models
         public string Password { get; set; }
         public string PaymentCard { get; set; }
         
-        public Basket Basket { get; set; }
+        public List<UserProduct> UserProducts { get; set; }
         public Role Role { get; set; }
     }
 }

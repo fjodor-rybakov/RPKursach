@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityDatabase.Models
 {
-    [Table("product")]
     public class Product
     {
         public int Id { get; set; }
@@ -13,6 +12,6 @@ namespace EntityDatabase.Models
         public Company Company { get; set; }
         public Category Category { get; set; }
         
-        public List<Basket> Baskets { get; set; }
+        public List<UserProduct> UserProducts { get; set; }
     }
 }
