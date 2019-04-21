@@ -6,17 +6,21 @@ src/Backend/bin
 
 src/Backend/bin/*
 
-src/EntityDatabase/bin
+src/Library/EntityDatabase/bin
 
-src/EntityDatabase/bin/*
+src/Library/EntityDatabase/bin/*
 
-src/ApiErrors/bin
+src/Library/ApiErrors/bin
 
-src/ApiErrors/bin/*
+src/Library/ApiErrors/bin/*
 
-src/Assets/User/bin
+src/Library/Assets/User/bin
 
-src/Assets/User/bin/*
+src/Library/Assets/User/bin/*
+
+src/Library/Assets/Redis/bin
+
+src/Library/Assets/Redis/bin/*
 
 src/Components/User/bin
 
