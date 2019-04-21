@@ -22,7 +22,10 @@ namespace EntityDatabase
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasData(
-                new Role {Id = 1, RoleName = "Admin"}, new Role {Id = 2, RoleName = "Customer"}
+                new Role {Id = 1, RoleName = "Администратор"}, new Role {Id = 2, RoleName = "Покупатель"}
+            );
+            modelBuilder.Entity<Category>().HasData(
+                new Category { Id = 1, CategoryName = "Игровой"}, new Category { Id = 2, CategoryName = "Домашний"}
             );
             base.OnModelCreating(modelBuilder);
         }
