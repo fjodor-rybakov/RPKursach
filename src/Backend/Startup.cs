@@ -37,11 +37,7 @@ namespace Backend
                 options.AddPolicy(MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader()
-                            .AllowCredentials();
+                        builder.WithOrigins("http://localhost:3000");
                     });
             });
         }
@@ -59,7 +55,7 @@ namespace Backend
                 app.UseHsts();
             }
             
-            app.UseCors(MyAllowSpecificOrigins); 
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
             app.UseMvc();
         }

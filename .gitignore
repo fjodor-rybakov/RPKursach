@@ -13,3 +13,11 @@ src/EntityDatabase/bin/*
 src/ApiErrors/bin
 
 src/ApiErrors/bin/*
+
+src/Assets/User/bin
+
+src/Assets/User/bin/*
+
+src/Components/User/bin
+
+src/Components/User/bin/*

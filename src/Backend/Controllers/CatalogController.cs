@@ -1,9 +1,6 @@
-using System;
 using System.Linq;
 using EntityDatabase;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 
 namespace Backend.Controllers
 {

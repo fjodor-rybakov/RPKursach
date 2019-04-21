@@ -4463,6 +4463,16 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "Assets/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Assets.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Assets.dll": {}
+        }
+      },
       "EntityDatabase/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -12173,6 +12183,11 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "Assets/1.0.0": {
+      "type": "project",
+      "path": "../Assets/Assets.csproj",
+      "msbuildProject": "../Assets/Assets.csproj"
+    },
     "EntityDatabase/1.0.0": {
       "type": "project",
       "path": "../EntityDatabase/EntityDatabase.csproj",
@@ -12181,6 +12196,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "Assets >= 1.0.0",
       "EntityDatabase >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
@@ -12216,6 +12232,9 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
+            "D:\\RPKursach\\src\\Assets\\Assets.csproj": {
+              "projectPath": "D:\\RPKursach\\src\\Assets\\Assets.csproj"
+            },
             "D:\\RPKursach\\src\\EntityDatabase\\EntityDatabase.csproj": {
               "projectPath": "D:\\RPKursach\\src\\EntityDatabase\\EntityDatabase.csproj"
             }
