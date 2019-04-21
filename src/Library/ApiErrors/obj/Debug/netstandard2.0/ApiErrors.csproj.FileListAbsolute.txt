@@ -1,0 +1,14 @@
+D:\RPKursach\src\Library\ApiErrors\bin\Debug\netstandard2.0\ApiErrors.deps.json
+D:\RPKursach\src\Library\ApiErrors\bin\Debug\netstandard2.0\ApiErrors.dll
+D:\RPKursach\src\Library\ApiErrors\bin\Debug\netstandard2.0\ApiErrors.pdb
+D:\RPKursach\src\Library\ApiErrors\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll
+D:\RPKursach\src\Library\ApiErrors\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll
+D:\RPKursach\src\Library\ApiErrors\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.xml
+D:\RPKursach\src\Library\ApiErrors\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.xml
+D:\RPKursach\src\Library\ApiErrors\obj\Debug\netstandard2.0\ApiErrors.csprojAssemblyReference.cache
+D:\RPKursach\src\Library\ApiErrors\obj\Debug\netstandard2.0\ApiErrors.csproj.CoreCompileInputs.cache
+D:\RPKursach\src\Library\ApiErrors\obj\Debug\netstandard2.0\ApiErrors.AssemblyInfoInputs.cache
+D:\RPKursach\src\Library\ApiErrors\obj\Debug\netstandard2.0\ApiErrors.AssemblyInfo.cs
+D:\RPKursach\src\Library\ApiErrors\obj\Debug\netstandard2.0\ApiErrors.csproj.CopyComplete
+D:\RPKursach\src\Library\ApiErrors\obj\Debug\netstandard2.0\ApiErrors.dll
+D:\RPKursach\src\Library\ApiErrors\obj\Debug\netstandard2.0\ApiErrors.pdb

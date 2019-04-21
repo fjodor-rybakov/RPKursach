@@ -1,0 +1,9 @@
+D:\RPKursach\src\Library\Assets\bin\Debug\netstandard2.0\Assets.deps.json
+D:\RPKursach\src\Library\Assets\bin\Debug\netstandard2.0\Assets.dll
+D:\RPKursach\src\Library\Assets\bin\Debug\netstandard2.0\Assets.pdb
+D:\RPKursach\src\Library\Assets\obj\Debug\netstandard2.0\Assets.csprojAssemblyReference.cache
+D:\RPKursach\src\Library\Assets\obj\Debug\netstandard2.0\Assets.csproj.CoreCompileInputs.cache
+D:\RPKursach\src\Library\Assets\obj\Debug\netstandard2.0\Assets.AssemblyInfoInputs.cache
+D:\RPKursach\src\Library\Assets\obj\Debug\netstandard2.0\Assets.AssemblyInfo.cs
+D:\RPKursach\src\Library\Assets\obj\Debug\netstandard2.0\Assets.dll
+D:\RPKursach\src\Library\Assets\obj\Debug\netstandard2.0\Assets.pdb

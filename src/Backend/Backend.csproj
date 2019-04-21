@@ -12,11 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EntityDatabase\EntityDatabase.csproj" />
+    <ProjectReference Include="..\Library\EntityDatabase\EntityDatabase.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Assets\Assets.csproj" />
+    <ProjectReference Include="..\Library\Assets\Assets.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Library\ApiErrors\ApiErrors.csproj" />
+  </ItemGroup>
+  
 </Project>

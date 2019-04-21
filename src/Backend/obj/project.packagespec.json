@@ -15,11 +15,14 @@
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "D:\\RPKursach\\src\\Assets\\Assets.csproj": {
-            "projectPath": "D:\\RPKursach\\src\\Assets\\Assets.csproj"
+          "D:\\RPKursach\\src\\Library\\ApiErrors\\ApiErrors.csproj": {
+            "projectPath": "D:\\RPKursach\\src\\Library\\ApiErrors\\ApiErrors.csproj"
           },
-          "D:\\RPKursach\\src\\EntityDatabase\\EntityDatabase.csproj": {
-            "projectPath": "D:\\RPKursach\\src\\EntityDatabase\\EntityDatabase.csproj"
+          "D:\\RPKursach\\src\\Library\\Assets\\Assets.csproj": {
+            "projectPath": "D:\\RPKursach\\src\\Library\\Assets\\Assets.csproj"
+          },
+          "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj": {
+            "projectPath": "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj"
           }
         }
       }

@@ -4463,6 +4463,16 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "ApiErrors/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/ApiErrors.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ApiErrors.dll": {}
+        }
+      },
       "Assets/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -12183,19 +12193,25 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "ApiErrors/1.0.0": {
+      "type": "project",
+      "path": "../Library/ApiErrors/ApiErrors.csproj",
+      "msbuildProject": "../Library/ApiErrors/ApiErrors.csproj"
+    },
     "Assets/1.0.0": {
       "type": "project",
-      "path": "../Assets/Assets.csproj",
-      "msbuildProject": "../Assets/Assets.csproj"
+      "path": "../Library/Assets/Assets.csproj",
+      "msbuildProject": "../Library/Assets/Assets.csproj"
     },
     "EntityDatabase/1.0.0": {
       "type": "project",
-      "path": "../EntityDatabase/EntityDatabase.csproj",
-      "msbuildProject": "../EntityDatabase/EntityDatabase.csproj"
+      "path": "../Library/EntityDatabase/EntityDatabase.csproj",
+      "msbuildProject": "../Library/EntityDatabase/EntityDatabase.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "ApiErrors >= 1.0.0",
       "Assets >= 1.0.0",
       "EntityDatabase >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
@@ -12232,11 +12248,14 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\RPKursach\\src\\Assets\\Assets.csproj": {
-              "projectPath": "D:\\RPKursach\\src\\Assets\\Assets.csproj"
+            "D:\\RPKursach\\src\\Library\\ApiErrors\\ApiErrors.csproj": {
+              "projectPath": "D:\\RPKursach\\src\\Library\\ApiErrors\\ApiErrors.csproj"
             },
-            "D:\\RPKursach\\src\\EntityDatabase\\EntityDatabase.csproj": {
-              "projectPath": "D:\\RPKursach\\src\\EntityDatabase\\EntityDatabase.csproj"
+            "D:\\RPKursach\\src\\Library\\Assets\\Assets.csproj": {
+              "projectPath": "D:\\RPKursach\\src\\Library\\Assets\\Assets.csproj"
+            },
+            "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj": {
+              "projectPath": "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj"
             }
           }
         }

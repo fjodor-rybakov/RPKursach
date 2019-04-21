@@ -15,3 +15,7 @@ D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.pdb
 D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.csproj.CopyComplete
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\EntityDatabase.dll
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\EntityDatabase.pdb
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\ApiErrors.dll
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Assets.dll
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Assets.pdb
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\ApiErrors.pdb
