@@ -1,0 +1,12 @@
+D:\RPKursach\src\Library\Redis\bin\Debug\netstandard2.0\Redis.deps.json
+D:\RPKursach\src\Library\Redis\bin\Debug\netstandard2.0\Redis.dll
+D:\RPKursach\src\Library\Redis\bin\Debug\netstandard2.0\Redis.pdb
+D:\RPKursach\src\Library\Redis\bin\Debug\netstandard2.0\Assets.dll
+D:\RPKursach\src\Library\Redis\bin\Debug\netstandard2.0\Assets.pdb
+D:\RPKursach\src\Library\Redis\obj\Debug\netstandard2.0\Redis.csprojAssemblyReference.cache
+D:\RPKursach\src\Library\Redis\obj\Debug\netstandard2.0\Redis.csproj.CoreCompileInputs.cache
+D:\RPKursach\src\Library\Redis\obj\Debug\netstandard2.0\Redis.AssemblyInfoInputs.cache
+D:\RPKursach\src\Library\Redis\obj\Debug\netstandard2.0\Redis.AssemblyInfo.cs
+D:\RPKursach\src\Library\Redis\obj\Debug\netstandard2.0\Redis.csproj.CopyComplete
+D:\RPKursach\src\Library\Redis\obj\Debug\netstandard2.0\Redis.dll
+D:\RPKursach\src\Library\Redis\obj\Debug\netstandard2.0\Redis.pdb

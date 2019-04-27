@@ -10,5 +10,7 @@ namespace ApiErrors
     public class ApiError : ControllerBase
     {
         public ActionResult UserNotFount => NotFound(new Error{Message = "Такой пользователь не существует"});
+        public ActionResult UserAlreadyExist => BadRequest(new Error{Message = "Такой пользователь уже существует"});
+        public ActionResult ServerError => StatusCode(500, new Error{Message = "Произошла ошибка на сервере"});
     }
 }

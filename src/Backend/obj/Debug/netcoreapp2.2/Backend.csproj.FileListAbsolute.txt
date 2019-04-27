@@ -19,3 +19,5 @@ D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\ApiErrors.dll
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Assets.dll
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Assets.pdb
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\ApiErrors.pdb
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Redis.dll
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Redis.pdb

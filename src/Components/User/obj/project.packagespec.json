@@ -14,7 +14,14 @@
     ],
     "frameworks": {
       "netcoreapp2.2": {
-        "projectReferences": {}
+        "projectReferences": {
+          "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj": {
+            "projectPath": "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj"
+          },
+          "D:\\RPKursach\\src\\Library\\Redis\\Redis.csproj": {
+            "projectPath": "D:\\RPKursach\\src\\Library\\Redis\\Redis.csproj"
+          }
+        }
       }
     },
     "warningProperties": {

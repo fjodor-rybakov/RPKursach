@@ -1,6 +1,7 @@
 ﻿using System;
 using StackExchange.Redis;
 using Assets.Redis;
+using Newtonsoft.Json;
 
 namespace Redis
 {
@@ -32,14 +33,20 @@ namespace Redis
         }
         
         public static ConnectionMultiplexer Connection => _lazyConnection.Value;
-        public static IDatabase RedisCache => Connection.GetDatabase();
+        public IDatabase RedisCache => Connection.GetDatabase();
 
-        public static Message GetMessage(string message)
+        public static RedisMessage GetMessage(string message)
         {
             if (message.Length == 0) return null;
-            var eventName = message.Split(' ')[0];
+            var eventName = message.Split(':')[0];
             var value = message.Substring(eventName.Length + 1);
-            return new Message { Event = eventName, Value = value };
+            return new RedisMessage { Event = eventName, Value = value };
+        }
+
+        public static string CreateMessage(string eventName, object value)
+        {
+            var json = JsonConvert.SerializeObject(value);
+            return $"{eventName}:{json}";
         }
     }
 }

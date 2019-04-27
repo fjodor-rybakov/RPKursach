@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using EntityDatabase;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ namespace Backend.Controllers
         [HttpGet("products")]
         public ActionResult GetProducts()
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (var db = new ApplicationContext())
             {
                 var products = (from product in db.Products
                     join company in db.Companies on product.CompanyId equals company.Id
