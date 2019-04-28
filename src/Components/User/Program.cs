@@ -35,7 +35,7 @@ namespace User
 
         private static string CreateUser(string value)
         {
-            var registrationUser = JsonConvert.DeserializeObject<RegistrationUser>(value);
+            var registrationUser = JsonConvert.DeserializeObject<RegistrationUserParam>(value);
             using (var db = new ApplicationContext())
             {
                 var userData = db.Users.Where(u => u.Email == registrationUser.Email).ToList();

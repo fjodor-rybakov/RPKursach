@@ -28,7 +28,7 @@ namespace Auth
                 var valueMessage = RedisContext.GetMessage(message);
                 if (valueMessage.Event != RedisEvents.Events.LoginUserEvent) return;
                 
-                var loginUser = JsonConvert.DeserializeObject<LoginUser>(valueMessage.Value);
+                var loginUser = JsonConvert.DeserializeObject<LoginUserParam>(valueMessage.Value);
                 var identity = GetIdentity(loginUser);
                 if (identity == null) return;
                 
@@ -60,13 +60,13 @@ namespace Auth
             return new JwtSecurityTokenHandler().WriteToken(jwt);
         }
 
-        private static ClaimsIdentity GetIdentity(LoginUser loginUser)
+        private static ClaimsIdentity GetIdentity(LoginUserParam loginUserParam)
         {
             using (var db = new ApplicationContext())
             {
                 var userData = (from user in db.Users
                     join role in db.Roles on user.RoleId equals role.Id
-                    where user.Email == loginUser.Email && user.Password == loginUser.Password
+                    where user.Email == loginUserParam.Email && user.Password == loginUserParam.Password
                     select new
                     {
                         user.Email,

@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Threading;
 using ApiErrors;
@@ -22,7 +21,7 @@ namespace Backend.Controllers
         private const int TimeMsAttempt = 500;
 
         [HttpPost("registration")]
-        public ActionResult<string> Registration([FromBody] RegistrationUser value)
+        public ActionResult<string> Registration([FromBody] RegistrationUserParam value)
         {
             // TODO: добавить валидацию
 
@@ -42,7 +41,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("login")]
-        public ActionResult<string> Login([FromBody] LoginUser value)
+        public ActionResult<string> Login([FromBody] LoginUserParam value)
         {
             // TODO: добавить валидацию
 

@@ -1,6 +1,6 @@
 namespace Assets.User
 {
-    public class LoginUser
+    public class LoginUserParam
     {
         public string Email { get; set; }
         public string Password { get; set; }
