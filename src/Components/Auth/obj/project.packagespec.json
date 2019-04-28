@@ -1,0 +1,62 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "D:\\RPKursach\\src\\Components\\Auth\\Auth.csproj",
+    "projectName": "Auth",
+    "projectPath": "D:\\RPKursach\\src\\Components\\Auth\\Auth.csproj",
+    "outputPath": "D:\\RPKursach\\src\\Components\\Auth\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.2"
+    ],
+    "frameworks": {
+      "netcoreapp2.2": {
+        "projectReferences": {
+          "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj": {
+            "projectPath": "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj"
+          },
+          "D:\\RPKursach\\src\\Library\\Redis\\Redis.csproj": {
+            "projectPath": "D:\\RPKursach\\src\\Library\\Redis\\Redis.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.2": {
+      "dependencies": {
+        "Microsoft.IdentityModel.Protocols.WsFederation": {
+          "target": "Package",
+          "version": "[5.4.0, )"
+        },
+        "Microsoft.IdentityModel.Tokens": {
+          "target": "Package",
+          "version": "[5.4.0, )"
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.2.0, )",
+          "autoReferenced": true
+        },
+        "System.IdentityModel.Tokens.Jwt": {
+          "target": "Package",
+          "version": "[5.4.0, )"
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

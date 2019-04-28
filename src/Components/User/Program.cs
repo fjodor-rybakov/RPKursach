@@ -18,14 +18,14 @@ namespace User
         {
             Sub.Subscribe(RedisEvents.Events.ChannelName, (channel, message) =>
             {
-                var value = RedisContext.GetMessage(message);
-                if (value.Event != RedisEvents.Events.RegistrationUserEvent) return;
+                var valueMessage = RedisContext.GetMessage(message);
+                if (valueMessage.Event != RedisEvents.Events.RegistrationUserEvent) return;
 
-                var newUser = CreateUser(value.Value);
+                var newUser = CreateUser(valueMessage.Value);
 
                 Sub.Publish(
                     RedisEvents.Events.ChannelName,
-                    RedisContext.CreateMessage(RedisEvents.Events.UserCreated, newUser)
+                    RedisContext.CreateMessage(RedisEvents.Events.UserCreatedEvent, newUser)
                 );
             });
 

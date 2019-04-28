@@ -6,12 +6,12 @@ namespace Redis
     {
         public static class Events
         {
-            public static readonly string ChannelName = "Events";
-            
+            public const string ChannelName = "Events";
+
             // User
-            public static readonly string RegistrationUserEvent = "__registrationUser__";
-            public static readonly string UserCreated = "__userCreated__";
-            public static readonly string UserCreatedError = "__userCreatedError__";
+            public const string RegistrationUserEvent = "__registrationUser__";
+            public const string UserCreatedEvent = "__userCreated__";
+            public const string LoginUserEvent = "__loginUser__";
         }
     }
 }
