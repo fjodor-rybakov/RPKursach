@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Assets.User;
 using EntityDatabase;
 using Redis;
 using StackExchange.Redis;
-
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
+using System.Text;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Microsoft.IdentityModel.Tokens;
 
@@ -30,23 +31,32 @@ namespace Auth
                 var loginUser = JsonConvert.DeserializeObject<LoginUser>(valueMessage.Value);
                 var identity = GetIdentity(loginUser);
                 if (identity == null) return;
+                
                 RedisCache.StringSet(loginUser.Email, GetToken(identity));
             });
 
             Console.WriteLine("Auth component is ready!");
             Console.ReadLine();
         }
+        
+        private static IConfigurationRoot Config => new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json").Build();
 
         private static string GetToken(ClaimsIdentity identity)
         {
+            var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Config.GetSection("Jwt:Key").Value));  
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);  
             var now = DateTime.UtcNow;
+            var lifeTime = Convert.ToDouble(Config.GetSection("Jwt:Lifetime").Value);
+            
             var jwt = new JwtSecurityToken(
-                AuthOptions.ISSUER,
-                AuthOptions.AUDIENCE,
+                Config.GetSection("Jwt:Issuer").Value,
+                Config.GetSection("Jwt:Audience").Value,
                 notBefore: now,
                 claims: identity.Claims,
-                expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
-                signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+                expires: now.Add(TimeSpan.FromMinutes(lifeTime)),
+                signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(jwt);
         }
 

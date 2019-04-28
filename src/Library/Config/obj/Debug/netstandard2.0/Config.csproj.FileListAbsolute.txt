@@ -1,0 +1,9 @@
+D:\RPKursach\src\Library\Config\bin\Debug\netstandard2.0\Config.deps.json
+D:\RPKursach\src\Library\Config\bin\Debug\netstandard2.0\Config.dll
+D:\RPKursach\src\Library\Config\bin\Debug\netstandard2.0\Config.pdb
+D:\RPKursach\src\Library\Config\obj\Debug\netstandard2.0\Config.csprojAssemblyReference.cache
+D:\RPKursach\src\Library\Config\obj\Debug\netstandard2.0\Config.csproj.CoreCompileInputs.cache
+D:\RPKursach\src\Library\Config\obj\Debug\netstandard2.0\Config.AssemblyInfoInputs.cache
+D:\RPKursach\src\Library\Config\obj\Debug\netstandard2.0\Config.AssemblyInfo.cs
+D:\RPKursach\src\Library\Config\obj\Debug\netstandard2.0\Config.dll
+D:\RPKursach\src\Library\Config\obj\Debug\netstandard2.0\Config.pdb

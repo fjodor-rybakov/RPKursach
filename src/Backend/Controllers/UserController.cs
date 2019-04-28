@@ -18,7 +18,7 @@ namespace Backend.Controllers
         private static readonly IDatabase RedisCache = Instance.RedisCache;
         private static readonly ISubscriber Sub = RedisCache.Multiplexer.GetSubscriber();
         private readonly ApiError _apiError = new ApiError();
-        private const int CountAttempt = 3;
+        private const int CountAttempt = 10;
         private const int TimeMsAttempt = 500;
 
         [HttpPost("registration")]
@@ -58,7 +58,7 @@ namespace Backend.Controllers
 
         private static string RetryGetToken(string email)
         {
-            for (var i = 0; i < CountAttempt + 5; i++)
+            for (var i = 0; i < CountAttempt; i++)
             {
                 Thread.Sleep(TimeMsAttempt);
                 string dataToken = RedisCache.StringGet(email);

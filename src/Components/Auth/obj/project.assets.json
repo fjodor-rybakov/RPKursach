@@ -2146,6 +2146,19 @@
           "bin/placeholder/Assets.dll": {}
         }
       },
+      "Config/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Config.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Config.dll": {}
+        }
+      },
       "EntityDatabase/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -7366,6 +7379,11 @@
       "path": "../../Library/Assets/Assets.csproj",
       "msbuildProject": "../../Library/Assets/Assets.csproj"
     },
+    "Config/1.0.0": {
+      "type": "project",
+      "path": "../../Library/Config/Config.csproj",
+      "msbuildProject": "../../Library/Config/Config.csproj"
+    },
     "EntityDatabase/1.0.0": {
       "type": "project",
       "path": "../../Library/EntityDatabase/EntityDatabase.csproj",
@@ -7379,6 +7397,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "Config >= 1.0.0",
       "EntityDatabase >= 1.0.0",
       "Microsoft.IdentityModel.Protocols.WsFederation >= 5.4.0",
       "Microsoft.IdentityModel.Tokens >= 5.4.0",
@@ -7415,6 +7434,9 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
+            "D:\\RPKursach\\src\\Library\\Config\\Config.csproj": {
+              "projectPath": "D:\\RPKursach\\src\\Library\\Config\\Config.csproj"
+            },
             "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj": {
               "projectPath": "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj"
             },
