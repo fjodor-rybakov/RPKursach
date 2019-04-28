@@ -25,3 +25,7 @@ src/Library/Assets/Redis/bin/*
 src/Components/User/bin
 
 src/Components/User/bin/*
+
+src/Components/Auth/bin
+
+src/Components/Auth/bin/*
