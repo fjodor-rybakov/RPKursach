@@ -14,8 +14,7 @@ namespace Backend.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private static readonly RedisContext Instance = RedisContext.GetInstance();
-        private static readonly IDatabase RedisCache = Instance.RedisCache;
+        private static readonly IDatabase RedisCache = RedisContext.RedisCache;
         private static readonly ISubscriber Sub = RedisCache.Multiplexer.GetSubscriber();
         private readonly ApiError _apiError = new ApiError();
         private const int CountAttempt = 10;

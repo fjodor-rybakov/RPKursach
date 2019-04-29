@@ -33,7 +33,7 @@ namespace Redis
         }
         
         public static ConnectionMultiplexer Connection => _lazyConnection.Value;
-        public IDatabase RedisCache => Connection.GetDatabase();
+        public static IDatabase RedisCache => Connection.GetDatabase();
 
         public static RedisMessage GetMessage(string message)
         {

@@ -15,9 +15,12 @@ namespace Backend.Controllers
     {
         private readonly ApiError _apiError = new ApiError();
         
+        [FromQuery(Name = "limit")] private int Limit { get; set;}
+        [FromQuery(Name = "page")] private int Page { get; set;}
         [HttpGet("products")]
         public ActionResult GetProducts()
         {
+            Console.WriteLine("Limit: " + Limit + ", Page: " + Page);
             try
             {
                 var db = new ApplicationContext();
@@ -30,7 +33,7 @@ namespace Backend.Controllers
                         company.CompanyName,
                         product.Price,
                         category.CategoryName
-                    }).ToList();
+                    }).Skip(Limit * Page).Take(Page).ToList();
                 
                 return Ok(products);
             }
