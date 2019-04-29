@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading;
 using ApiErrors;
@@ -21,38 +22,62 @@ namespace Backend.Controllers
         private const int TimeMsAttempt = 500;
 
         [HttpPost("registration")]
-        public ActionResult<string> Registration([FromBody] RegistrationUserParam value)
+        public ActionResult<string> Registration([FromBody] RegistrationUserParam registrationUser)
         {
             // TODO: добавить валидацию
 
-            Sub.Publish(
-                RedisEvents.Events.ChannelName,
-                RedisContext.CreateMessage(RedisEvents.Events.RegistrationUserEvent, value)
-            );
-            using (var db = new ApplicationContext())
+            try
             {
-                var userData = db.Users.Where(u => u.Email == value.Email).ToList();
+                var db = new ApplicationContext();
+                var userData = db.Users.Where(u => u.Email == registrationUser.Email).ToList();
                 if (userData.Count != 0) return _apiError.UserAlreadyExist;
 
-                return RetryGetEmail(db, value.Email)
-                    ? _apiError.ServerError
-                    : Ok(new {Message = "Пользователь успешно создан"});
+                var user = new EntityDatabase.Models.User
+                {
+                    Email = registrationUser.Email,
+                    Password = registrationUser.Password,
+                    FirstName = registrationUser.FirstName,
+                    LastName = registrationUser.LastName,
+                    PaymentCard = registrationUser.PaymentCard,
+                    RoleId = 2
+                };
+                db.Users.Add(user);
+                db.SaveChanges();
+                
+                return Ok(new {Message = "Пользователь успешно создан"});
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return _apiError.ServerError;
             }
         }
 
         [HttpPost("login")]
-        public ActionResult<string> Login([FromBody] LoginUserParam value)
+        public ActionResult<string> Login([FromBody] LoginUserParam loginUserParam)
         {
             // TODO: добавить валидацию
-
-            Sub.Publish(
-                RedisEvents.Events.ChannelName,
-                RedisContext.CreateMessage(RedisEvents.Events.LoginUserEvent, value)
-            );
-            var token = RetryGetToken(value.Email);
-            RedisCache.KeyDelete(value.Email);
-
-            return token == null ? _apiError.UserNotFount : Ok(new {AccessToken = token});
+            
+            try
+            {
+                var db = new ApplicationContext();
+                var userData = db.Users.FirstOrDefault(u => u.Email == loginUserParam.Email);
+                if (userData == null) return _apiError.UserNotFount;
+                
+                Sub.Publish(
+                    RedisEvents.Events.ChannelName,
+                    RedisContext.CreateMessage(RedisEvents.Events.LoginUserEvent, loginUserParam)
+                );
+                var token = RetryGetToken(loginUserParam.Email);
+                RedisCache.KeyDelete(loginUserParam.Email);
+                
+                return token == null ? _apiError.UserNotFount : Ok(new {AccessToken = token});
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return _apiError.ServerError;
+            }
         }
 
         private static string RetryGetToken(string email)
@@ -65,18 +90,6 @@ namespace Backend.Controllers
             }
 
             return null;
-        }
-
-        private static bool RetryGetEmail(ApplicationContext db, string email)
-        {
-            for (var i = 0; i < CountAttempt; i++)
-            {
-                Thread.Sleep(TimeMsAttempt);
-                var userData = db.Users.Where(u => u.Email == email).ToList();
-                if (userData.Count != 0) return false;
-            }
-
-            return true;
         }
     }
 }

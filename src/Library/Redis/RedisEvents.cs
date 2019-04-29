@@ -9,8 +9,6 @@ namespace Redis
             public const string ChannelName = "Events";
 
             // User
-            public const string RegistrationUserEvent = "__registrationUser__";
-            public const string UserCreatedEvent = "__userCreated__";
             public const string LoginUserEvent = "__loginUser__";
         }
     }
