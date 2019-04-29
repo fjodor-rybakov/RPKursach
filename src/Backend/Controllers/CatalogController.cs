@@ -77,10 +77,10 @@ namespace Backend.Controllers
                 var product = db.Products.FirstOrDefault(p => p.Id == id);
                 if (product == null) return _apiError.ProductNotFound;
 
-                product.ProductName = productParam.ProductName;
-                product.Price = productParam.Price;
-                product.CompanyId = productParam.CompanyId;
-                product.CategoryId = productParam.CategoryId;
+                product.ProductName = productParam.ProductName ?? product.ProductName;
+                product.Price = productParam.Price <= 0 ? product.Price : productParam.Price;
+                product.CompanyId = productParam.CompanyId <= 0 ? product.CompanyId : productParam.CompanyId;
+                product.CategoryId = productParam.CategoryId <= 0 ? product.CategoryId : productParam.CategoryId;
                 
                 db.SaveChanges();
                 
