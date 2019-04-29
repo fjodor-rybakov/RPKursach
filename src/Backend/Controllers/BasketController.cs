@@ -6,7 +6,6 @@ using EntityDatabase;
 using EntityDatabase.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace Backend.Controllers
 {
@@ -82,6 +81,7 @@ namespace Backend.Controllers
                 var db = new ApplicationContext();
                 var userProducts = db.UserProducts.FirstOrDefault(up => up.UserId == user.Id && up.ProductId == id);
                 if (userProducts == null) return _apiError.ProductNotFound;
+                
                 db.UserProducts.Remove(userProducts);
                 db.SaveChanges();
                 

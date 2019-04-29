@@ -103,7 +103,7 @@ namespace Backend.Controllers
                 var product = db.Products.FirstOrDefault(p => p.Id == id);
                 if (product == null) return _apiError.ProductNotFound;
                 
-                db.Products.Remove(new Product {Id = id});
+                db.Products.Remove(product);
                 db.SaveChanges();
                 
                 return Ok(new {Message = "Продукт упешно удалён"});
