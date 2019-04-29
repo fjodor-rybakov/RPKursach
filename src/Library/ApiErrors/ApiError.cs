@@ -15,5 +15,7 @@ namespace ApiErrors
         public ActionResult ProductNotFound => NotFound(new Error{Message = "Продкукт не найден"});
         
         public ActionResult ServerError => StatusCode(500, new Error{Message = "Произошла ошибка на сервере"});
+        public object InvalidToken => StatusCode(401, new Error {Message = "Токен истёк или не валиден"}).Value;
+        public object AccessDenied => StatusCode(403, new Error {Message = "Недостаточно прав"}).Value;
     }
 }
