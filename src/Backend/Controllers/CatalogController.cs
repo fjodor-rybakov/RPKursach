@@ -14,15 +14,17 @@ namespace Backend.Controllers
     public class CatalogController : ControllerBase
     {
         private readonly ApiError _apiError = new ApiError();
-        
-        [FromQuery(Name = "limit")] private int Limit { get; set;}
-        [FromQuery(Name = "page")] private int Page { get; set;}
+
+        [FromQuery(Name = "limit")] public int Limit { get; set; }
+        [FromQuery(Name = "page")] public int Page { get; set; }
+
         [HttpGet("products")]
         public ActionResult GetProducts()
         {
             try
             {
                 var db = new ApplicationContext();
+                var count = db.Products.Count();
                 var products = (from product in db.Products
                     join company in db.Companies on product.CompanyId equals company.Id
                     join category in db.Categories on product.CategoryId equals category.Id
@@ -32,9 +34,9 @@ namespace Backend.Controllers
                         company.CompanyName,
                         product.Price,
                         category.CategoryName
-                    }).Skip(Limit * Page).Take(Page).ToList();
-                
-                return Ok(products);
+                    }).Skip(Limit * Page).Take(Limit).ToList();
+
+                return Ok(new {totalCount = count, data = products});
             }
             catch (Exception e)
             {
@@ -59,7 +61,7 @@ namespace Backend.Controllers
                 });
 
                 db.SaveChanges();
-                
+
                 return Ok(new {Message = "Продукты успешно добавлены"});
             }
             catch (Exception e)
@@ -83,9 +85,9 @@ namespace Backend.Controllers
                 product.Price = productParam.Price <= 0 ? product.Price : productParam.Price;
                 product.CompanyId = productParam.CompanyId <= 0 ? product.CompanyId : productParam.CompanyId;
                 product.CategoryId = productParam.CategoryId <= 0 ? product.CategoryId : productParam.CategoryId;
-                
+
                 db.SaveChanges();
-                
+
                 return Ok(new {Message = "Продукт успешно обновлён"});
             }
             catch (Exception e)
@@ -104,10 +106,10 @@ namespace Backend.Controllers
                 var db = new ApplicationContext();
                 var product = db.Products.FirstOrDefault(p => p.Id == id);
                 if (product == null) return _apiError.ProductNotFound;
-                
+
                 db.Products.Remove(product);
                 db.SaveChanges();
-                
+
                 return Ok(new {Message = "Продукт упешно удалён"});
             }
             catch (Exception e)
