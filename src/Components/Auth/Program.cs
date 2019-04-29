@@ -17,7 +17,8 @@ namespace Auth
 {
     class Program
     {
-        private static readonly IDatabase RedisCache = RedisContext.RedisCache;
+        private static readonly RedisContext Instance = RedisContext.GetInstance();
+        private static readonly IDatabase RedisCache = Instance.RedisCache;
         private static readonly ISubscriber Sub = RedisCache.Multiplexer.GetSubscriber();
 
         public static void Main()
