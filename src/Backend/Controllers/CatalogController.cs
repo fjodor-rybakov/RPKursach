@@ -20,7 +20,6 @@ namespace Backend.Controllers
         [HttpGet("products")]
         public ActionResult GetProducts()
         {
-            Console.WriteLine("Limit: " + Limit + ", Page: " + Page);
             try
             {
                 var db = new ApplicationContext();
