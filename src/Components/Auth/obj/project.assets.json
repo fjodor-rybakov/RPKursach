@@ -2150,6 +2150,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Assets": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.2.0",
           "Microsoft.Extensions.Configuration.Json": "2.2.0",
@@ -7379,7 +7380,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "D:\\RPKursach\\src\\Library\\Config\\Config.csproj",
       "EntityDatabase >= 1.0.0",
       "Microsoft.IdentityModel.Protocols.WsFederation >= 5.4.0",
       "Microsoft.IdentityModel.Tokens >= 5.4.0",
@@ -7416,9 +7416,6 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\RPKursach\\src\\Library\\Config\\Config.csproj": {
-              "projectPath": "D:\\RPKursach\\src\\Library\\Config\\Config.csproj"
-            },
             "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj": {
               "projectPath": "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj"
             },
@@ -7463,16 +7460,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'D:\\RPKursach\\src\\Library\\Config\\Config.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "D:\\RPKursach\\src\\Library\\Config\\Config.csproj",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.2"
-      ]
-    }
-  ]
+  }
 }

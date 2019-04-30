@@ -16,3 +16,6 @@ D:\RPKursach\src\Library\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.
 D:\RPKursach\src\Library\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.AssemblyInfo.cs
 D:\RPKursach\src\Library\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.dll
 D:\RPKursach\src\Library\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.pdb
+D:\RPKursach\src\Library\EntityDatabase\bin\Debug\netstandard2.0\Assets.dll
+D:\RPKursach\src\Library\EntityDatabase\bin\Debug\netstandard2.0\Assets.pdb
+D:\RPKursach\src\Library\EntityDatabase\obj\Debug\netstandard2.0\EntityDatabase.csproj.CopyComplete

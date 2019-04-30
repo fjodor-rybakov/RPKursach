@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using ApiErrors;
+using Assets.Basket;
+using Assets.User;
 using EntityDatabase;
 using EntityDatabase.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -15,9 +18,9 @@ namespace Backend.Controllers
     {
         private readonly ApiError _apiError = new ApiError();
 
-        [Authorize(Roles = "Покупатель")]
-        [HttpGet("{id}")]
-        public ActionResult<string> AddBasket(int id)
+        [Authorize(Roles = ERoles.Customer)]
+        [HttpPost("products")]
+        public ActionResult<string> AddBasket([FromBody] BasketProductParams basketProductParams)
         {
             try
             {
@@ -25,10 +28,16 @@ namespace Backend.Controllers
                 if (user == null) return _apiError.UserNotFount;
 
                 var db = new ApplicationContext();
+                var product = db.Products.FirstOrDefault(p => p.Id == basketProductParams.ProductId);
+                if (product == null) return _apiError.ProductNotFound;
+
+                if (product.Count - basketProductParams.ProductCount < 0) return _apiError.IncorrectProductCount;
+                
                 db.UserProducts.Add(new UserProduct
                 {
-                    ProductId = id,
-                    UserId = user.Id
+                    ProductId = basketProductParams.ProductId,
+                    UserId = user.Id,
+                    ProductCount = basketProductParams.ProductCount
                 });
                 db.SaveChanges();
 
@@ -41,7 +50,7 @@ namespace Backend.Controllers
             }
         }
 
-        [Authorize(Roles = "Покупатель")]
+        [Authorize(Roles = ERoles.Customer)]
         [HttpGet("products")]
         public ActionResult<string> GetAllBasketProducts()
         {
@@ -62,6 +71,7 @@ namespace Backend.Controllers
                         company.CompanyName,
                         product.Price,
                         product.Description,
+                        userProduct.ProductCount,
                         category.CategoryName
                     }).ToList();
 
@@ -74,7 +84,7 @@ namespace Backend.Controllers
             }
         }
 
-        [Authorize(Roles = "Покупатель")]
+        [Authorize(Roles = ERoles.Customer)]
         [HttpDelete("{id}")]
         public ActionResult<string> DeleteBasketProduct(int id)
         {
@@ -91,6 +101,46 @@ namespace Backend.Controllers
                 db.SaveChanges();
                 
                 return Ok(new {Message = "Продукт успешно удалён из корзины"});
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return _apiError.ServerError;
+            }
+        }
+        
+        [Authorize(Roles = ERoles.Customer)]
+        [HttpPost("buy")]
+        public ActionResult<string> BuyProducts([FromBody] List<BasketProductParams> basketProductParams)
+        {
+            try
+            {
+                var user = GetUser(HttpContext.User);
+                if (user == null) return _apiError.UserNotFount;
+                
+                var db = new ApplicationContext();
+                foreach (var item in basketProductParams)
+                {
+                    var userProducts = db.UserProducts.FirstOrDefault(up => up.UserId == user.Id && up.ProductId == item.ProductId);
+                    if (userProducts == null) return _apiError.ProductNotFound;
+                    
+                    var product = db.Products.FirstOrDefault(p => p.Id == item.ProductId);
+                    if (product == null) return _apiError.ProductNotFound;
+
+                    if (product.Count - item.ProductId < 0) return _apiError.IncorrectProductCount;
+                    
+                    // снятие денег с карты
+
+                    db.PurchaseHistories.Add(new PurchaseHistory
+                    {
+                        ProductId = item.ProductId,
+                        UserId = user.Id,
+                        ProductCount = item.ProductCount
+                    });
+                    db.SaveChanges();
+                }
+                
+                return Ok(new {Message = "Продукты успешно куплены"});
             }
             catch (Exception e)
             {

@@ -1,6 +1,6 @@
 namespace EntityDatabase.Models
 {
-    public class UserProduct
+    public class PurchaseHistory
     {
         public int Id { get; set; }
         public int ProductCount { get; set; }

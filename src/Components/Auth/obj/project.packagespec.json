@@ -15,9 +15,6 @@
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "D:\\RPKursach\\src\\Library\\Config\\Config.csproj": {
-            "projectPath": "D:\\RPKursach\\src\\Library\\Config\\Config.csproj"
-          },
           "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj": {
             "projectPath": "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj"
           },

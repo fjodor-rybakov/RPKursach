@@ -906,6 +906,16 @@
         "runtime": {
           "lib/netstandard2.0/_._": {}
         }
+      },
+      "Assets/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Assets.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Assets.dll": {}
+        }
       }
     }
   },
@@ -3524,10 +3534,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Assets/1.0.0": {
+      "type": "project",
+      "path": "../Assets/Assets.csproj",
+      "msbuildProject": "../Assets/Assets.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Assets >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.4",
       "Microsoft.EntityFrameworkCore.Tools >= 2.2.4",
       "Microsoft.Extensions.Configuration.FileExtensions >= 2.2.0",
@@ -3563,7 +3579,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\RPKursach\\src\\Library\\Assets\\Assets.csproj": {
+              "projectPath": "D:\\RPKursach\\src\\Library\\Assets\\Assets.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

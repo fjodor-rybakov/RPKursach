@@ -1,9 +1,12 @@
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading;
 using ApiErrors;
 using Assets.User;
 using EntityDatabase;
+using EntityDatabase.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Redis;
 using StackExchange.Redis;
@@ -24,15 +27,13 @@ namespace Backend.Controllers
         [HttpPost("registration")]
         public ActionResult<string> Registration([FromBody] RegistrationUserParam registrationUser)
         {
-            // TODO: добавить валидацию
-
             try
             {
                 var db = new ApplicationContext();
                 var userData = db.Users.Where(u => u.Email == registrationUser.Email).ToList();
                 if (userData.Count != 0) return _apiError.UserAlreadyExist;
 
-                var user = new EntityDatabase.Models.User
+                var user = new User
                 {
                     Email = registrationUser.Email,
                     Password = registrationUser.Password,
@@ -43,7 +44,7 @@ namespace Backend.Controllers
                 };
                 db.Users.Add(user);
                 db.SaveChanges();
-                
+
                 return Ok(new {Message = "Пользователь успешно создан"});
             }
             catch (Exception e)
@@ -56,22 +57,105 @@ namespace Backend.Controllers
         [HttpPost("login")]
         public ActionResult<string> Login([FromBody] LoginUserParam loginUserParam)
         {
-            // TODO: добавить валидацию
-            
             try
             {
                 var db = new ApplicationContext();
                 var userData = db.Users.FirstOrDefault(u => u.Email == loginUserParam.Email);
                 if (userData == null) return _apiError.UserNotFount;
-                
+
                 Sub.Publish(
                     RedisEvents.Events.ChannelName,
                     RedisContext.CreateMessage(RedisEvents.Events.LoginUserEvent, loginUserParam)
                 );
                 var token = RetryGetToken(loginUserParam.Email);
                 RedisCache.KeyDelete(loginUserParam.Email);
-                
+
                 return token == null ? _apiError.UserNotFount : Ok(new {AccessToken = token});
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return _apiError.ServerError;
+            }
+        }
+
+        [Authorize(Roles = ERoles.Customer)]
+        [HttpGet]
+        public ActionResult<string> GetUserInfo()
+        {
+            try
+            {
+                var user = GetUser(HttpContext.User);
+                if (user == null) return _apiError.UserNotFount;
+
+                return Ok(new
+                {
+                    user.Email,
+                    user.FirstName,
+                    user.LastName,
+                    user.PaymentCard
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return _apiError.ServerError;
+            }
+        }
+
+        [Authorize(Roles = ERoles.Customer)]
+        [HttpGet("history")]
+        public ActionResult<string> GetPurchaseHistory()
+        {
+            try
+            {
+                var user = GetUser(HttpContext.User);
+                if (user == null) return _apiError.UserNotFount;
+
+                var db = new ApplicationContext();
+                var userPurchaseHistory = (from purchaseHistory in db.PurchaseHistories
+                    join product in db.Products on purchaseHistory.ProductId equals product.Id
+                    where purchaseHistory.UserId == user.Id
+                    select new
+                    {
+                        purchaseHistory.ProductCount,
+                        product.Price,
+                        product.ProductName,
+                        product.Description
+                    }).ToList();
+
+                return Ok(userPurchaseHistory);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return _apiError.ServerError;
+            }
+        }
+
+        [Authorize(Roles = ERoles.Administrator)]
+        [HttpGet("history/all")]
+        public ActionResult<string> GetPurchaseHistoryAll()
+        {
+            try
+            {
+                var user = GetUser(HttpContext.User);
+                if (user == null) return _apiError.UserNotFount;
+
+                var db = new ApplicationContext();
+                var userPurchaseHistory = (from purchaseHistory in db.PurchaseHistories
+                    join product in db.Products on purchaseHistory.ProductId equals product.Id
+                    select new
+                    {
+                        purchaseHistory.ProductCount,
+                        product.Price,
+                        product.ProductName,
+                        product.Description,
+                        purchaseHistory.ProductId,
+                        purchaseHistory.UserId
+                    }).ToList();
+
+                return Ok(userPurchaseHistory);
             }
             catch (Exception e)
             {
@@ -90,6 +174,15 @@ namespace Backend.Controllers
             }
 
             return null;
+        }
+
+        private static User GetUser(ClaimsPrincipal principal)
+        {
+            using (var db = new ApplicationContext())
+            {
+                var email = principal.Claims?.First(x => x.Type == ClaimTypes.Name).Value;
+                return db.Users.FirstOrDefault(u => u.Email == email);
+            }
         }
     }
 }

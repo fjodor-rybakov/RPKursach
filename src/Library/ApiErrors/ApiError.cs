@@ -13,6 +13,7 @@ namespace ApiErrors
         public ActionResult UserAlreadyExist => BadRequest(new Error{Message = "Такой пользователь уже существует"});
 
         public ActionResult ProductNotFound => NotFound(new Error{Message = "Продкукт не найден"});
+        public ActionResult IncorrectProductCount => BadRequest(new Error {Message = "Не верное кол-во продукта"});
         
         public ActionResult ServerError => StatusCode(500, new Error{Message = "Произошла ошибка на сервере"});
         public object InvalidToken => StatusCode(401, new Error {Message = "Токен истёк или не валиден"}).Value;

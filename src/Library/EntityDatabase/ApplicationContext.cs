@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Assets.User;
 using EntityDatabase.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,7 @@ namespace EntityDatabase
         public DbSet<Role> Roles { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<UserProduct> UserProducts { get; set; }
+        public DbSet<PurchaseHistory> PurchaseHistories { get; set; }
 
         public ApplicationContext()
         {
@@ -22,11 +24,14 @@ namespace EntityDatabase
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasData(
-                new Role {Id = 1, RoleName = "Администратор"}, new Role {Id = 2, RoleName = "Покупатель"}
+                new Role {Id = 1, RoleName = ERoles.Administrator}, new Role {Id = 2, RoleName = ERoles.Customer}
             );
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, CategoryName = "Игровой"}, new Category { Id = 2, CategoryName = "Домашний"}
             );
+            modelBuilder.Entity<User>(entity => {
+                entity.HasIndex(e => e.Email).IsUnique();
+            });
             base.OnModelCreating(modelBuilder);
         }
 
