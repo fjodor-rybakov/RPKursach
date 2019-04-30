@@ -53,11 +53,16 @@ namespace Backend.Controllers
                 var db = new ApplicationContext();
                 var products =  (from userProduct in db.UserProducts 
                     join product in db.Products on userProduct.ProductId equals product.Id
+                    join company in db.Companies on product.CompanyId equals company.Id
+                    join category in db.Categories on product.CategoryId equals category.Id
                     where userProduct.UserId == user.Id
                     select new
                     {
                         product.ProductName,
-                        product.Price
+                        company.CompanyName,
+                        product.Price,
+                        product.Description,
+                        category.CategoryName
                     }).ToList();
 
                 return Ok(products);

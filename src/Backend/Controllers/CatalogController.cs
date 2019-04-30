@@ -33,6 +33,7 @@ namespace Backend.Controllers
                         product.ProductName,
                         company.CompanyName,
                         product.Price,
+                        product.Description,
                         category.CategoryName
                     }).Skip(Limit * Page).Take(Limit).ToList();
 
@@ -56,6 +57,7 @@ namespace Backend.Controllers
                 {
                     ProductName = product.ProductName,
                     Price = product.Price,
+                    Description = product.Description,
                     CompanyId = product.CompanyId,
                     CategoryId = product.CategoryId
                 });
@@ -83,6 +85,7 @@ namespace Backend.Controllers
 
                 product.ProductName = productParam.ProductName ?? product.ProductName;
                 product.Price = productParam.Price <= 0 ? product.Price : productParam.Price;
+                product.Description = productParam.Description ?? product.Description;
                 product.CompanyId = productParam.CompanyId <= 0 ? product.CompanyId : productParam.CompanyId;
                 product.CategoryId = productParam.CategoryId <= 0 ? product.CategoryId : productParam.CategoryId;
 
