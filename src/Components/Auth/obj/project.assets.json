@@ -2146,19 +2146,6 @@
           "bin/placeholder/Assets.dll": {}
         }
       },
-      "Config/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Newtonsoft.Json": "12.0.1"
-        },
-        "compile": {
-          "bin/placeholder/Config.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Config.dll": {}
-        }
-      },
       "EntityDatabase/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -7379,11 +7366,6 @@
       "path": "../../Library/Assets/Assets.csproj",
       "msbuildProject": "../../Library/Assets/Assets.csproj"
     },
-    "Config/1.0.0": {
-      "type": "project",
-      "path": "../../Library/Config/Config.csproj",
-      "msbuildProject": "../../Library/Config/Config.csproj"
-    },
     "EntityDatabase/1.0.0": {
       "type": "project",
       "path": "../../Library/EntityDatabase/EntityDatabase.csproj",
@@ -7397,7 +7379,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "Config >= 1.0.0",
+      "D:\\RPKursach\\src\\Library\\Config\\Config.csproj",
       "EntityDatabase >= 1.0.0",
       "Microsoft.IdentityModel.Protocols.WsFederation >= 5.4.0",
       "Microsoft.IdentityModel.Tokens >= 5.4.0",
@@ -7481,5 +7463,16 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'D:\\RPKursach\\src\\Library\\Config\\Config.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "D:\\RPKursach\\src\\Library\\Config\\Config.csproj",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    }
+  ]
 }
