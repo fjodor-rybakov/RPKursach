@@ -40,7 +40,7 @@ namespace Backend.Controllers
                         product.Description,
                         product.Count,
                         category.CategoryName,
-                        Image = GetBase64(product.ImagePath)
+                        image = GetBase64(product.ImagePath)
                     }).Skip(Limit * Page).Take(Limit).ToList();
 
                 return Ok(new {totalCount = count, data = products});
@@ -204,7 +204,9 @@ namespace Backend.Controllers
         private static string GetBase64(string imagePath)
         {
             var bytes = System.IO.File.ReadAllBytes(imagePath);
-            return Convert.ToBase64String(bytes);
+            var items = imagePath.Split(".");
+            var type = items[items.Length - 1];
+            return $"data:image/{type};base64, {Convert.ToBase64String(bytes)}";
         }
 
         private static IConfigurationRoot Config => new ConfigurationBuilder()

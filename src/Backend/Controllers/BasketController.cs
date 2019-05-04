@@ -154,7 +154,9 @@ namespace Backend.Controllers
         private static string GetBase64(string imagePath)
         {
             var bytes = System.IO.File.ReadAllBytes(imagePath);
-            return Convert.ToBase64String(bytes);
+            var items = imagePath.Split(".");
+            var type = items[items.Length - 1];
+            return $"data:image/{type};base64, {Convert.ToBase64String(bytes)}";
         }
 
         private static User GetUser(ClaimsPrincipal principal)
