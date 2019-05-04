@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Mime;
 using System.Threading.Tasks;
 using ApiErrors;
 using Assets.Catalog;
@@ -10,11 +9,8 @@ using Assets.User;
 using EntityDatabase;
 using EntityDatabase.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Net.Http.Headers;
 
 namespace Backend.Controllers
 {
@@ -43,7 +39,8 @@ namespace Backend.Controllers
                         product.Price,
                         product.Description,
                         product.Count,
-                        category.CategoryName
+                        category.CategoryName,
+                        Image = GetBase64(product.ImagePath)
                     }).Skip(Limit * Page).Take(Limit).ToList();
 
                 return Ok(new {totalCount = count, data = products});
@@ -140,7 +137,7 @@ namespace Backend.Controllers
             {
                 var db = new ApplicationContext();
                 var result = (from company in db.Companies select new {company.Id, company.CompanyName}).ToList();
-                
+
                 return Ok(result);
             }
             catch (Exception e)
@@ -149,7 +146,7 @@ namespace Backend.Controllers
                 return _apiError.ServerError;
             }
         }
-        
+
         [HttpGet("categories")]
         public ActionResult<string> GetCategoriesList()
         {
@@ -157,7 +154,7 @@ namespace Backend.Controllers
             {
                 var db = new ApplicationContext();
                 var result = (from category in db.Categories select new {category.Id, category.CategoryName}).ToList();
-                
+
                 return Ok(result);
             }
             catch (Exception e)
@@ -184,17 +181,17 @@ namespace Backend.Controllers
 
                 if (Request.Form.Files.Count != 1) return _apiError.IncorrectCountImageFile;
                 if (!acceptContentTypes.Contains(file.ContentType)) return _apiError.IncorrectContentTypeFile;
-                
+
                 using (var stream = new FileStream(filePath, FileMode.Create))
                     await file.CopyToAsync(stream);
-                
+
                 var db = new ApplicationContext();
                 var product = db.Products.FirstOrDefault(p => p.Id == id);
                 if (product == null) return _apiError.ProductNotFound;
 
                 product.ImagePath = filePath;
                 db.SaveChanges();
-                
+
                 return Ok(new {Message = "Картинка успешно обновлена"});
             }
             catch (Exception e)
@@ -203,7 +200,13 @@ namespace Backend.Controllers
                 return _apiError.ServerError;
             }
         }
-        
+
+        private static string GetBase64(string imagePath)
+        {
+            var bytes = System.IO.File.ReadAllBytes(imagePath);
+            return Convert.ToBase64String(bytes);
+        }
+
         private static IConfigurationRoot Config => new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json").Build();

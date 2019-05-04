@@ -32,7 +32,7 @@ namespace Backend.Controllers
                 if (product == null) return _apiError.ProductNotFound;
 
                 if (product.Count - basketProductParams.ProductCount < 0) return _apiError.IncorrectProductCount;
-                
+
                 db.UserProducts.Add(new UserProduct
                 {
                     ProductId = basketProductParams.ProductId,
@@ -58,9 +58,9 @@ namespace Backend.Controllers
             {
                 var user = GetUser(HttpContext.User);
                 if (user == null) return _apiError.UserNotFount;
-                
+
                 var db = new ApplicationContext();
-                var products =  (from userProduct in db.UserProducts 
+                var products = (from userProduct in db.UserProducts
                     join product in db.Products on userProduct.ProductId equals product.Id
                     join company in db.Companies on product.CompanyId equals company.Id
                     join category in db.Categories on product.CategoryId equals category.Id
@@ -72,7 +72,8 @@ namespace Backend.Controllers
                         product.Price,
                         product.Description,
                         userProduct.ProductCount,
-                        category.CategoryName
+                        category.CategoryName,
+                        Image = GetBase64(product.ImagePath)
                     }).ToList();
 
                 return Ok(products);
@@ -96,10 +97,10 @@ namespace Backend.Controllers
                 var db = new ApplicationContext();
                 var userProducts = db.UserProducts.FirstOrDefault(up => up.UserId == user.Id && up.ProductId == id);
                 if (userProducts == null) return _apiError.ProductNotFound;
-                
+
                 db.UserProducts.Remove(userProducts);
                 db.SaveChanges();
-                
+
                 return Ok(new {Message = "Продукт успешно удалён из корзины"});
             }
             catch (Exception e)
@@ -108,7 +109,7 @@ namespace Backend.Controllers
                 return _apiError.ServerError;
             }
         }
-        
+
         [Authorize(Roles = ERoles.Customer)]
         [HttpPost("buy")]
         public ActionResult<string> BuyProducts([FromBody] List<BasketProductParams> basketProductParams)
@@ -117,18 +118,19 @@ namespace Backend.Controllers
             {
                 var user = GetUser(HttpContext.User);
                 if (user == null) return _apiError.UserNotFount;
-                
+
                 var db = new ApplicationContext();
                 foreach (var item in basketProductParams)
                 {
-                    var userProducts = db.UserProducts.FirstOrDefault(up => up.UserId == user.Id && up.ProductId == item.ProductId);
+                    var userProducts =
+                        db.UserProducts.FirstOrDefault(up => up.UserId == user.Id && up.ProductId == item.ProductId);
                     if (userProducts == null) return _apiError.ProductNotFound;
-                    
+
                     var product = db.Products.FirstOrDefault(p => p.Id == item.ProductId);
                     if (product == null) return _apiError.ProductNotFound;
 
                     if (product.Count - item.ProductId < 0) return _apiError.IncorrectProductCount;
-                    
+
                     // снятие денег с карты
 
                     db.PurchaseHistories.Add(new PurchaseHistory
@@ -139,7 +141,7 @@ namespace Backend.Controllers
                     });
                     db.SaveChanges();
                 }
-                
+
                 return Ok(new {Message = "Продукты успешно куплены"});
             }
             catch (Exception e)
@@ -148,7 +150,13 @@ namespace Backend.Controllers
                 return _apiError.ServerError;
             }
         }
-        
+
+        private static string GetBase64(string imagePath)
+        {
+            var bytes = System.IO.File.ReadAllBytes(imagePath);
+            return Convert.ToBase64String(bytes);
+        }
+
         private static User GetUser(ClaimsPrincipal principal)
         {
             using (var db = new ApplicationContext())

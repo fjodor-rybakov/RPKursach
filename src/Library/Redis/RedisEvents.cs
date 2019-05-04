@@ -10,6 +10,7 @@ namespace Redis
 
             // User
             public const string LoginUserEvent = "__loginUser__";
+            public const string GetImagesEvent = "__getImages__";
         }
     }
 }
