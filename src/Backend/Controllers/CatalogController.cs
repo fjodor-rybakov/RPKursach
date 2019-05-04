@@ -22,6 +22,7 @@ namespace Backend.Controllers
 
         [FromQuery(Name = "limit")] public int Limit { get; set; }
         [FromQuery(Name = "page")] public int Page { get; set; }
+        [FromQuery(Name = "filter")] public string Filter { get; set; }
         [HttpGet("products")]
         public ActionResult GetProducts()
         {
@@ -32,6 +33,7 @@ namespace Backend.Controllers
                 var products = (from product in db.Products
                     join company in db.Companies on product.CompanyId equals company.Id
                     join category in db.Categories on product.CategoryId equals category.Id
+                    where Filter == null || Filter == category.CategoryName || Filter == company.CompanyName
                     select new
                     {
                         product.ProductName,
@@ -40,7 +42,7 @@ namespace Backend.Controllers
                         product.Description,
                         product.Count,
                         category.CategoryName,
-                        image = GetBase64(product.ImagePath)
+                        // image = GetBase64(product.ImagePath)
                     }).Skip(Limit * Page).Take(Limit).ToList();
 
                 return Ok(new {totalCount = count, data = products});
