@@ -42,7 +42,7 @@ namespace Backend.Controllers
                         product.Description,
                         product.Count,
                         category.CategoryName,
-                        // image = GetBase64(product.ImagePath)
+                        image = GetBase64(product.ImagePath)
                     }).Skip(Limit * Page).Take(Limit).ToList();
 
                 return Ok(new {totalCount = count, data = products});
