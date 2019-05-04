@@ -25,19 +25,16 @@ if exist %version% (
 )
 mkdir %version%
 cd %version%
-
+mkdir files\products
 mkdir src
 cd src
 
 mkdir Components
-cd Components
 
 cd %path_backend%
-dotnet publish /p:PublishDir=%path_build%\%version%\src\Backend
+dotnet publish --output %path_build%\%version%\src\Backend
 cd %path_auth%
-dotnet publish /p:PublishDir=%path_build%\%version%\src\Components\Auth
-
-cd %path_build%/%version%
+dotnet publish --output %path_build%\%version%\src\Components\Auth
 
 xcopy "%scripts%\run.bat" "%path_build%\%version%"
 xcopy "%scripts%\stop.bat" "%path_build%\%version%"

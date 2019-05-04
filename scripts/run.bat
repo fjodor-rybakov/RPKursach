@@ -1,4 +1,8 @@
 @echo off
+set work_dir=%cd%
 start redis-server
-start "Backend" dotnet src\Backend\Backend.dll
-start "Auth" dotnet src\Components\Auth\Auth.dll
+cd src\Backend
+start "Backend" dotnet Backend.dll
+cd %work_dir%
+cd src\Components\Auth
+start "Auth" dotnet Auth.dll

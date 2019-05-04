@@ -16,3 +16,4 @@ D:\RPKursach\src\Components\Auth\obj\Debug\netcoreapp2.2\Auth.AssemblyInfo.cs
 D:\RPKursach\src\Components\Auth\obj\Debug\netcoreapp2.2\Auth.csproj.CopyComplete
 D:\RPKursach\src\Components\Auth\obj\Debug\netcoreapp2.2\Auth.dll
 D:\RPKursach\src\Components\Auth\obj\Debug\netcoreapp2.2\Auth.pdb
+D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\appsettings.json

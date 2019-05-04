@@ -1,5 +1,3 @@
-using Assets.User;
-
 namespace Redis
 {
     public static class RedisEvents

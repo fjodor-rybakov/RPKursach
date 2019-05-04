@@ -9,8 +9,10 @@ namespace Redis
     {
         private static Lazy<ConnectionMultiplexer> _lazyConnection;
         private static RedisContext _instance;
-        
-        private RedisContext() {}
+
+        private RedisContext()
+        {
+        }
 
         public static RedisContext GetInstance()
         {
@@ -26,12 +28,13 @@ namespace Redis
             var configurationOptionsTable = new ConfigurationOptions
             {
                 AbortOnConnectFail = false,
-                EndPoints = { "localhost:6379" }
+                EndPoints = {"localhost:6379"}
             };
 
-            _lazyConnection = new Lazy<ConnectionMultiplexer>(() => ConnectionMultiplexer.Connect(configurationOptionsTable));
+            _lazyConnection =
+                new Lazy<ConnectionMultiplexer>(() => ConnectionMultiplexer.Connect(configurationOptionsTable));
         }
-        
+
         public static ConnectionMultiplexer Connection => _lazyConnection.Value;
         public IDatabase RedisCache => Connection.GetDatabase();
 
@@ -40,7 +43,7 @@ namespace Redis
             if (message.Length == 0) return null;
             var eventName = message.Split(':')[0];
             var value = message.Substring(eventName.Length + 1);
-            return new RedisMessage { Event = eventName, Value = value };
+            return new RedisMessage {Event = eventName, Value = value};
         }
 
         public static string CreateMessage(string eventName, object value)

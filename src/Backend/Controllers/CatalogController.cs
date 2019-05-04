@@ -23,6 +23,7 @@ namespace Backend.Controllers
         [FromQuery(Name = "limit")] public int Limit { get; set; }
         [FromQuery(Name = "page")] public int Page { get; set; }
         [FromQuery(Name = "filter")] public string Filter { get; set; }
+
         [HttpGet("products")]
         public ActionResult GetProducts()
         {

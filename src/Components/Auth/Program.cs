@@ -27,29 +27,29 @@ namespace Auth
             {
                 var valueMessage = RedisContext.GetMessage(message);
                 if (valueMessage.Event != RedisEvents.Events.LoginUserEvent) return;
-                
+
                 var loginUser = JsonConvert.DeserializeObject<LoginUserParam>(valueMessage.Value);
                 var identity = GetIdentity(loginUser);
                 if (identity == null) return;
-                
+
                 RedisCache.StringSet(loginUser.Email, GetToken(identity));
             });
 
             Console.WriteLine("Auth component is ready!");
             Console.ReadLine();
         }
-        
+
         private static IConfigurationRoot Config => new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json").Build();
 
         private static string GetToken(ClaimsIdentity identity)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Config.GetSection("Jwt:Key").Value));  
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);  
+            var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Config.GetSection("Jwt:Key").Value));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var now = DateTime.UtcNow;
             var lifeTime = Convert.ToDouble(Config.GetSection("Jwt:Lifetime").Value);
-            
+
             var jwt = new JwtSecurityToken(
                 Config.GetSection("Jwt:Issuer").Value,
                 Config.GetSection("Jwt:Audience").Value,

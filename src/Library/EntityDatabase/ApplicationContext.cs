@@ -18,7 +18,7 @@ namespace EntityDatabase
 
         public ApplicationContext()
         {
-           Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -27,11 +27,9 @@ namespace EntityDatabase
                 new Role {Id = 1, RoleName = ERoles.Administrator}, new Role {Id = 2, RoleName = ERoles.Customer}
             );
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, CategoryName = "Игровой"}, new Category { Id = 2, CategoryName = "Домашний"}
+                new Category {Id = 1, CategoryName = "Игровой"}, new Category {Id = 2, CategoryName = "Домашний"}
             );
-            modelBuilder.Entity<User>(entity => {
-                entity.HasIndex(e => e.Email).IsUnique();
-            });
+            modelBuilder.Entity<User>(entity => { entity.HasIndex(e => e.Email).IsUnique(); });
             base.OnModelCreating(modelBuilder);
         }
 

@@ -17,6 +17,7 @@ namespace Backend
     {
         private const string MyAllowSpecificOrigins = "AllowAll";
         private readonly ApiError _apiError = new ApiError();
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -36,11 +37,11 @@ namespace Backend
                     {
                         ValidateIssuer = true,
                         ValidIssuer = Configuration.GetSection("Jwt:Issuer").Value,
- 
+
                         ValidateAudience = true,
                         ValidAudience = Configuration.GetSection("Jwt:Audience").Value,
                         ValidateLifetime = true,
-                        
+
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
                         ValidateIssuerSigningKey = true
                     };
@@ -55,17 +56,13 @@ namespace Backend
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
-                    builder =>
-                    {
-                        builder.WithOrigins("http://localhost:3000").AllowAnyHeader();
-                    });
+                    builder => { builder.WithOrigins("http://localhost:3000").AllowAnyHeader(); });
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -74,7 +71,7 @@ namespace Backend
             {
                 app.UseHsts();
             }
-            
+
             app.Use(async (context, next) =>
             {
                 await next();
@@ -83,17 +80,18 @@ namespace Backend
                     context.Response.ContentType = "application/json";
                     await context.Response.WriteAsync(JsonConvert.SerializeObject(_apiError.InvalidToken));
                 }
+
                 if (context.Response.StatusCode == 403)
                 {
                     context.Response.ContentType = "application/json";
                     await context.Response.WriteAsync(JsonConvert.SerializeObject(_apiError.AccessDenied));
                 }
             });
-            
-            
+
+
             app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
-            
+
             app.UseAuthentication();
             app.UseMvc();
         }
