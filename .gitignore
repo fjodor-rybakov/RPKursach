@@ -29,3 +29,5 @@ src/Components/User/bin/*
 src/Components/Auth/bin
 
 src/Components/Auth/bin/*
+
+build
