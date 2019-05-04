@@ -1,12 +1,20 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mime;
+using System.Threading.Tasks;
 using ApiErrors;
 using Assets.Catalog;
 using Assets.User;
 using EntityDatabase;
 using EntityDatabase.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Net.Http.Headers;
 
 namespace Backend.Controllers
 {
@@ -66,7 +74,7 @@ namespace Backend.Controllers
 
                 db.SaveChanges();
 
-                return Ok(new {Message = "Продукты успешно добавлены"});
+                return Ok(new {Message = "Продукт успешно добавлен"});
             }
             catch (Exception e)
             {
@@ -158,5 +166,46 @@ namespace Backend.Controllers
                 return _apiError.ServerError;
             }
         }
+
+        [Authorize(Roles = ERoles.Administrator)]
+        [HttpPost("products/image/{id}")]
+        public async Task<ActionResult<string>> UploadProductImage(int id)
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                var extensionFile = file.ContentType.Split("/")[1];
+                var acceptContentTypes = new List<string>
+                {
+                    EContentType.ImagePng, EContentType.ImageJpg, EContentType.ImageJpeg
+                };
+                var filePath =
+                    $"{Config.GetSection("StaticPathImage").Value}/products/product_image_{id}.{extensionFile}";
+
+                if (Request.Form.Files.Count != 1) return _apiError.IncorrectCountImageFile;
+                if (!acceptContentTypes.Contains(file.ContentType)) return _apiError.IncorrectContentTypeFile;
+                
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                    await file.CopyToAsync(stream);
+                
+                var db = new ApplicationContext();
+                var product = db.Products.FirstOrDefault(p => p.Id == id);
+                if (product == null) return _apiError.ProductNotFound;
+
+                product.ImagePath = filePath;
+                db.SaveChanges();
+                
+                return Ok(new {Message = "Картинка успешно обновлена"});
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return _apiError.ServerError;
+            }
+        }
+        
+        private static IConfigurationRoot Config => new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json").Build();
     }
 }
