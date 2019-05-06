@@ -61,7 +61,7 @@ namespace Backend.Controllers
             try
             {
                 var db = new ApplicationContext();
-                db.Products.Add(new Product
+                var newProduct = new Product
                 {
                     ProductName = product.ProductName,
                     Price = product.Price,
@@ -69,11 +69,11 @@ namespace Backend.Controllers
                     CompanyId = product.CompanyId,
                     Count = product.Count,
                     CategoryId = product.CategoryId
-                });
-
+                };
+                db.Products.Add(newProduct);
                 db.SaveChanges();
 
-                return Ok(new {Message = "Продукт успешно добавлен"});
+                return Ok(new {newProduct.Id});
             }
             catch (Exception e)
             {
