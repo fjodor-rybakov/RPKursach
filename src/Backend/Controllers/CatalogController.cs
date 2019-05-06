@@ -36,6 +36,7 @@ namespace Backend.Controllers
                     where Filter == null || Filter == category.CategoryName || Filter == company.CompanyName
                     select new
                     {
+                        product.Id,
                         product.ProductName,
                         company.CompanyName,
                         product.Price,
