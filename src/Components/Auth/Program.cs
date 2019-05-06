@@ -33,7 +33,7 @@ namespace Auth
                 if (identity == null) return;
 
                 var token = GetToken(identity);
-                Console.WriteLine($"Token was created for {loginUser}: " + token);
+                Console.WriteLine($"Token was created for {loginUser.Email}: " + token);
                 
                 RedisCache.StringSet(loginUser.Email, token);
             });
