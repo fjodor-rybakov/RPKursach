@@ -79,7 +79,7 @@ namespace Backend.Controllers
             }
         }
 
-        [Authorize(Roles = ERoles.Customer)]
+        [Authorize(Roles = ERoles.Customer + ", " + ERoles.Administrator)]
         [HttpGet]
         public ActionResult<string> GetUserInfo()
         {
@@ -92,6 +92,7 @@ namespace Backend.Controllers
                 {
                     user.Email,
                     user.FirstName,
+                    user.RoleId,
                     user.LastName,
                     user.PaymentCard
                 });
@@ -103,7 +104,7 @@ namespace Backend.Controllers
             }
         }
 
-        [Authorize(Roles = ERoles.Customer)]
+        [Authorize(Roles = ERoles.Customer + ", " + ERoles.Administrator)]
         [HttpGet("history")]
         public ActionResult<string> GetPurchaseHistory()
         {
@@ -147,6 +148,7 @@ namespace Backend.Controllers
                     join product in db.Products on purchaseHistory.ProductId equals product.Id
                     select new
                     {
+                        purchaseHistory.Id,
                         purchaseHistory.ProductCount,
                         product.Price,
                         product.ProductName,
@@ -156,6 +158,37 @@ namespace Backend.Controllers
                     }).ToList();
 
                 return Ok(userPurchaseHistory);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return _apiError.ServerError;
+            }
+        }
+
+        [Authorize(Roles = ERoles.Administrator)]
+        [HttpDelete("history/{id}")]
+        public ActionResult<string> CancelOrder(int id)
+        {
+            try
+            {
+                var user = GetUser(HttpContext.User);
+                if (user == null) return _apiError.UserNotFount;
+
+                var db = new ApplicationContext();
+                var order = db.PurchaseHistories.Where(o => o.Id == id).ToList();
+                if (order.Count == 0) return _apiError.OrderNotFound;
+
+                foreach (var item in order)
+                {
+                    var product = db.Products.FirstOrDefault(p => p.Id == item.ProductId);
+                    if (product != null) product.Count += item.ProductCount;
+                }
+
+                db.PurchaseHistories.RemoveRange(order);
+                db.SaveChanges();
+
+                return Ok(new {Message = "Заказ успешно отменён"});
             }
             catch (Exception e)
             {

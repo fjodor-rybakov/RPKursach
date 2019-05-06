@@ -18,7 +18,7 @@ namespace Backend.Controllers
     {
         private readonly ApiError _apiError = new ApiError();
 
-        [Authorize(Roles = ERoles.Customer)]
+        [Authorize(Roles = ERoles.Customer + ", " + ERoles.Administrator)]
         [HttpPost("products")]
         public ActionResult<string> AddBasket([FromBody] BasketProductParams basketProductParams)
         {
@@ -50,7 +50,7 @@ namespace Backend.Controllers
             }
         }
 
-        [Authorize(Roles = ERoles.Customer)]
+        [Authorize(Roles = ERoles.Customer + ", " + ERoles.Administrator)]
         [HttpGet("products")]
         public ActionResult<string> GetAllBasketProducts()
         {
@@ -85,7 +85,7 @@ namespace Backend.Controllers
             }
         }
 
-        [Authorize(Roles = ERoles.Customer)]
+        [Authorize(Roles = ERoles.Customer + ", " + ERoles.Administrator)]
         [HttpDelete("{id}")]
         public ActionResult<string> DeleteBasketProduct(int id)
         {
@@ -110,7 +110,7 @@ namespace Backend.Controllers
             }
         }
 
-        [Authorize(Roles = ERoles.Customer)]
+        [Authorize(Roles = ERoles.Customer + ", " + ERoles.Administrator)]
         [HttpPost("buy")]
         public ActionResult<string> BuyProducts([FromBody] List<BasketProductParams> basketProductParams)
         {
@@ -153,6 +153,7 @@ namespace Backend.Controllers
 
         private static string GetBase64(string imagePath)
         {
+            if (!System.IO.File.Exists(imagePath)) return "";
             var bytes = System.IO.File.ReadAllBytes(imagePath);
             var items = imagePath.Split(".");
             var type = items[items.Length - 1];

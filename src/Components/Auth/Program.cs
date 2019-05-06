@@ -32,7 +32,10 @@ namespace Auth
                 var identity = GetIdentity(loginUser);
                 if (identity == null) return;
 
-                RedisCache.StringSet(loginUser.Email, GetToken(identity));
+                var token = GetToken(identity);
+                Console.WriteLine($"Token was created for {loginUser}: " + token);
+                
+                RedisCache.StringSet(loginUser.Email, token);
             });
 
             Console.WriteLine("Auth component is ready!");

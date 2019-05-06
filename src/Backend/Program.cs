@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Backend
 {
@@ -13,6 +14,13 @@ namespace Backend
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:3001/");
+                .UseUrls("http://localhost:3001/")
+                .ConfigureLogging((hostingContext, logging) =>
+                {
+                    logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                    logging.AddConsole();
+                    logging.AddDebug();
+                    logging.AddEventSourceLogger();
+                });
     }
 }

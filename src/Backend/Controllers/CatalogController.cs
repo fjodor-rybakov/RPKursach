@@ -23,7 +23,6 @@ namespace Backend.Controllers
         [FromQuery(Name = "limit")] public int Limit { get; set; }
         [FromQuery(Name = "page")] public int Page { get; set; }
         [FromQuery(Name = "filter")] public string Filter { get; set; }
-
         [HttpGet("products")]
         public ActionResult GetProducts()
         {
@@ -206,6 +205,7 @@ namespace Backend.Controllers
 
         private static string GetBase64(string imagePath)
         {
+            if (!System.IO.File.Exists(imagePath)) return "";
             var bytes = System.IO.File.ReadAllBytes(imagePath);
             var items = imagePath.Split(".");
             var type = items[items.Length - 1];
