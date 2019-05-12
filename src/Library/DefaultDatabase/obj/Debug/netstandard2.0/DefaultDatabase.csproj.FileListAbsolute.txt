@@ -1,0 +1,12 @@
+D:\RPKursach\src\Library\DefaultDatabase\bin\Debug\netstandard2.0\DefaultDatabase.deps.json
+D:\RPKursach\src\Library\DefaultDatabase\bin\Debug\netstandard2.0\DefaultDatabase.dll
+D:\RPKursach\src\Library\DefaultDatabase\bin\Debug\netstandard2.0\DefaultDatabase.pdb
+D:\RPKursach\src\Library\DefaultDatabase\bin\Debug\netstandard2.0\Assets.dll
+D:\RPKursach\src\Library\DefaultDatabase\bin\Debug\netstandard2.0\Assets.pdb
+D:\RPKursach\src\Library\DefaultDatabase\obj\Debug\netstandard2.0\DefaultDatabase.csprojAssemblyReference.cache
+D:\RPKursach\src\Library\DefaultDatabase\obj\Debug\netstandard2.0\DefaultDatabase.csproj.CoreCompileInputs.cache
+D:\RPKursach\src\Library\DefaultDatabase\obj\Debug\netstandard2.0\DefaultDatabase.AssemblyInfoInputs.cache
+D:\RPKursach\src\Library\DefaultDatabase\obj\Debug\netstandard2.0\DefaultDatabase.AssemblyInfo.cs
+D:\RPKursach\src\Library\DefaultDatabase\obj\Debug\netstandard2.0\DefaultDatabase.csproj.CopyComplete
+D:\RPKursach\src\Library\DefaultDatabase\obj\Debug\netstandard2.0\DefaultDatabase.dll
+D:\RPKursach\src\Library\DefaultDatabase\obj\Debug\netstandard2.0\DefaultDatabase.pdb

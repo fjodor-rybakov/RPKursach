@@ -6,25 +6,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.App"/>
-        <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All"/>
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.1"/>
+        <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Library\EntityDatabase\EntityDatabase.csproj"/>
+        <ProjectReference Include="..\Library\Assets\Assets.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Library\Assets\Assets.csproj"/>
+        <ProjectReference Include="..\Library\ApiErrors\ApiErrors.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Library\ApiErrors\ApiErrors.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\Library\Redis\Redis.csproj"/>
+        <ProjectReference Include="..\Library\DefaultDatabase\DefaultDatabase.csproj" />
+        <ProjectReference Include="..\Library\Redis\Redis.csproj" />
     </ItemGroup>
 
     <ItemGroup>

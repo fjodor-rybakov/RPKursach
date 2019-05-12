@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Library\EntityDatabase\EntityDatabase.csproj" />
+    <ProjectReference Include="..\..\Library\DefaultDatabase\DefaultDatabase.csproj" />
     <ProjectReference Include="..\..\Library\Redis\Redis.csproj" />
   </ItemGroup>
 

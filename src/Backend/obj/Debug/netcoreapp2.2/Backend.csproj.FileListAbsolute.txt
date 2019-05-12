@@ -13,8 +13,6 @@ D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.RazorTargetAssemblyInfo
 D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.dll
 D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.pdb
 D:\RPKursach\src\Backend\obj\Debug\netcoreapp2.2\Backend.csproj.CopyComplete
-D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\EntityDatabase.dll
-D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\EntityDatabase.pdb
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\ApiErrors.dll
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Assets.dll
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Assets.pdb
@@ -22,3 +20,5 @@ D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\ApiErrors.pdb
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Redis.dll
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\Redis.pdb
 D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\appsettings.json
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\DefaultDatabase.dll
+D:\RPKursach\src\Backend\bin\Debug\netcoreapp2.2\DefaultDatabase.pdb

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.User;
-using EntityDatabase;
+using DefaultDatabase;
 using Redis;
 using StackExchange.Redis;
 using System.Security.Claims;

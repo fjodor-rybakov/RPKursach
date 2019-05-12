@@ -1,0 +1,9 @@
+D:\RPKursach\src\Library\ShowcaseDatabase\bin\Debug\netstandard2.0\ShowcaseDatabase.deps.json
+D:\RPKursach\src\Library\ShowcaseDatabase\bin\Debug\netstandard2.0\ShowcaseDatabase.dll
+D:\RPKursach\src\Library\ShowcaseDatabase\bin\Debug\netstandard2.0\ShowcaseDatabase.pdb
+D:\RPKursach\src\Library\ShowcaseDatabase\obj\Debug\netstandard2.0\ShowcaseDatabase.csprojAssemblyReference.cache
+D:\RPKursach\src\Library\ShowcaseDatabase\obj\Debug\netstandard2.0\ShowcaseDatabase.csproj.CoreCompileInputs.cache
+D:\RPKursach\src\Library\ShowcaseDatabase\obj\Debug\netstandard2.0\ShowcaseDatabase.AssemblyInfoInputs.cache
+D:\RPKursach\src\Library\ShowcaseDatabase\obj\Debug\netstandard2.0\ShowcaseDatabase.AssemblyInfo.cs
+D:\RPKursach\src\Library\ShowcaseDatabase\obj\Debug\netstandard2.0\ShowcaseDatabase.dll
+D:\RPKursach\src\Library\ShowcaseDatabase\obj\Debug\netstandard2.0\ShowcaseDatabase.pdb

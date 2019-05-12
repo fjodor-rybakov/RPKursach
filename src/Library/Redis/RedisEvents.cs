@@ -8,7 +8,10 @@ namespace Redis
 
             // User
             public const string LoginUserEvent = "__loginUser__";
-            public const string GetImagesEvent = "__getImages__";
+            
+            // Products
+            public const string AddProductEvent = "__addProduct__";
+            public const string UpdateProductEvent = "__updateProduct__";
         }
     }
 }

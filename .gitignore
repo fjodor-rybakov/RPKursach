@@ -6,9 +6,17 @@ src/Backend/bin
 
 src/Backend/bin/*
 
+src/Showcase/bin
+
+src/Showcase/bin/*
+
 src/Library/EntityDatabase/bin
 
 src/Library/EntityDatabase/bin/*
+
+src/Library/ShowcaseDatabase/bin
+
+src/Library/ShowcaseDatabase/bin/*
 
 src/Library/ApiErrors/bin
 
@@ -21,10 +29,6 @@ src/Library/Assets/User/bin/*
 src/Library/Assets/Redis/bin
 
 src/Library/Assets/Redis/bin/*
-
-src/Components/User/bin
-
-src/Components/User/bin/*
 
 src/Components/Auth/bin
 

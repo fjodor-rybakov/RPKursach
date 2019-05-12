@@ -4,8 +4,9 @@ using System.Security.Claims;
 using System.Threading;
 using ApiErrors;
 using Assets.User;
-using EntityDatabase;
-using EntityDatabase.Models;
+using Backend.ShowcaseRequests;
+using DefaultDatabase;
+using DefaultDatabase.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Redis;
@@ -115,8 +116,8 @@ namespace Backend.Controllers
 
                 var db = new ApplicationContext();
                 var userPurchaseHistory = (from purchaseHistory in db.PurchaseHistories
-                    join product in db.Products on purchaseHistory.ProductId equals product.Id
                     where purchaseHistory.UserId == user.Id
+                    let product = Transport.GetProductInfo(purchaseHistory.ProductId)
                     select new
                     {
                         purchaseHistory.ProductCount,
@@ -145,7 +146,7 @@ namespace Backend.Controllers
 
                 var db = new ApplicationContext();
                 var userPurchaseHistory = (from purchaseHistory in db.PurchaseHistories
-                    join product in db.Products on purchaseHistory.ProductId equals product.Id
+                    let product = Transport.GetProductInfo(purchaseHistory.ProductId)
                     select new
                     {
                         purchaseHistory.Id,
@@ -174,6 +175,7 @@ namespace Backend.Controllers
             {
                 var user = GetUser(HttpContext.User);
                 if (user == null) return _apiError.UserNotFount;
+                var token = HttpContext.Request.Headers["Authorization"];
 
                 var db = new ApplicationContext();
                 var order = db.PurchaseHistories.Where(o => o.Id == id).ToList();
@@ -181,8 +183,8 @@ namespace Backend.Controllers
 
                 foreach (var item in order)
                 {
-                    var product = db.Products.FirstOrDefault(p => p.Id == item.ProductId);
-                    if (product != null) product.Count += item.ProductCount;
+                    var product = Transport.GetProductInfo(item.ProductId);
+                    if (product != null) Transport.UpdateProductCount(item.ProductId, product.Count += item.ProductCount, token);
                 }
 
                 db.PurchaseHistories.RemoveRange(order);

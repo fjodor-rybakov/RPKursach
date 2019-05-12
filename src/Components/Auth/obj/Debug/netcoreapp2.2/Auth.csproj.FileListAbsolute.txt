@@ -4,9 +4,7 @@ D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\Auth.runtimeconfig.dev.
 D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\Auth.dll
 D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\Auth.pdb
 D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\Assets.dll
-D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\EntityDatabase.dll
 D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\Redis.dll
-D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\EntityDatabase.pdb
 D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\Redis.pdb
 D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\Assets.pdb
 D:\RPKursach\src\Components\Auth\obj\Debug\netcoreapp2.2\Auth.csprojAssemblyReference.cache
@@ -17,3 +15,5 @@ D:\RPKursach\src\Components\Auth\obj\Debug\netcoreapp2.2\Auth.csproj.CopyComplet
 D:\RPKursach\src\Components\Auth\obj\Debug\netcoreapp2.2\Auth.dll
 D:\RPKursach\src\Components\Auth\obj\Debug\netcoreapp2.2\Auth.pdb
 D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\appsettings.json
+D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\DefaultDatabase.dll
+D:\RPKursach\src\Components\Auth\bin\Debug\netcoreapp2.2\DefaultDatabase.pdb

@@ -155,6 +155,9 @@
       "Assets/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "StackExchange.Redis": "2.0.601"
+        },
         "compile": {
           "bin/placeholder/Assets.dll": {}
         },

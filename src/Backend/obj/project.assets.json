@@ -4557,6 +4557,9 @@
       "Assets/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "StackExchange.Redis": "2.0.601"
+        },
         "compile": {
           "bin/placeholder/Assets.dll": {}
         },
@@ -4564,7 +4567,7 @@
           "bin/placeholder/Assets.dll": {}
         }
       },
-      "EntityDatabase/1.0.0": {
+      "DefaultDatabase/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -4575,10 +4578,10 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "2.1.2"
         },
         "compile": {
-          "bin/placeholder/EntityDatabase.dll": {}
+          "bin/placeholder/DefaultDatabase.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EntityDatabase.dll": {}
+          "bin/placeholder/DefaultDatabase.dll": {}
         }
       },
       "Redis/1.0.0": {
@@ -12437,10 +12440,10 @@
       "path": "../Library/Assets/Assets.csproj",
       "msbuildProject": "../Library/Assets/Assets.csproj"
     },
-    "EntityDatabase/1.0.0": {
+    "DefaultDatabase/1.0.0": {
       "type": "project",
-      "path": "../Library/EntityDatabase/EntityDatabase.csproj",
-      "msbuildProject": "../Library/EntityDatabase/EntityDatabase.csproj"
+      "path": "../Library/DefaultDatabase/DefaultDatabase.csproj",
+      "msbuildProject": "../Library/DefaultDatabase/DefaultDatabase.csproj"
     },
     "Redis/1.0.0": {
       "type": "project",
@@ -12452,7 +12455,7 @@
     ".NETCoreApp,Version=v2.2": [
       "ApiErrors >= 1.0.0",
       "Assets >= 1.0.0",
-      "EntityDatabase >= 1.0.0",
+      "DefaultDatabase >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
@@ -12494,8 +12497,8 @@
             "D:\\RPKursach\\src\\Library\\Assets\\Assets.csproj": {
               "projectPath": "D:\\RPKursach\\src\\Library\\Assets\\Assets.csproj"
             },
-            "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj": {
-              "projectPath": "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj"
+            "D:\\RPKursach\\src\\Library\\DefaultDatabase\\DefaultDatabase.csproj": {
+              "projectPath": "D:\\RPKursach\\src\\Library\\DefaultDatabase\\DefaultDatabase.csproj"
             },
             "D:\\RPKursach\\src\\Library\\Redis\\Redis.csproj": {
               "projectPath": "D:\\RPKursach\\src\\Library\\Redis\\Redis.csproj"

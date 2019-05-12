@@ -12,11 +12,14 @@
     "originalTargetFrameworks": [
       "netcoreapp2.2"
     ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj": {
-            "projectPath": "D:\\RPKursach\\src\\Library\\EntityDatabase\\EntityDatabase.csproj"
+          "D:\\RPKursach\\src\\Library\\DefaultDatabase\\DefaultDatabase.csproj": {
+            "projectPath": "D:\\RPKursach\\src\\Library\\DefaultDatabase\\DefaultDatabase.csproj"
           },
           "D:\\RPKursach\\src\\Library\\Redis\\Redis.csproj": {
             "projectPath": "D:\\RPKursach\\src\\Library\\Redis\\Redis.csproj"

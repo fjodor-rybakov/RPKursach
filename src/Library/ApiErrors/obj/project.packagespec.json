@@ -12,6 +12,9 @@
     "originalTargetFrameworks": [
       "netstandard2.0"
     ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
     "frameworks": {
       "netstandard2.0": {
         "projectReferences": {}
