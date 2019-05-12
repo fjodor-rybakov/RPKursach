@@ -10,9 +10,9 @@ src/Showcase/bin
 
 src/Showcase/bin/*
 
-src/Library/EntityDatabase/bin
+src/Library/DefaultDatabase/bin
 
-src/Library/EntityDatabase/bin/*
+src/Library/DefaultDatabase/bin/*
 
 src/Library/ShowcaseDatabase/bin
 
@@ -29,6 +29,14 @@ src/Library/Assets/User/bin/*
 src/Library/Assets/Redis/bin
 
 src/Library/Assets/Redis/bin/*
+
+src/Library/Assets/bin
+
+src/Library/Assets/bin/*
+
+src/Library/Redis/bin
+
+src/Library/Redis/bin/*
 
 src/Components/Auth/bin
 
