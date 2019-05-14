@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Assets.Catalog;
+using Assets.Other;
 using Newtonsoft.Json;
 
 namespace Backend.ShowcaseRequests
@@ -20,7 +21,7 @@ namespace Backend.ShowcaseRequests
             return json == null ? null : JsonConvert.DeserializeObject<ProductInfo>(json);
         }
 
-        public static ProductInfo UpdateProductCount(int id, int count, string token)
+        public static MessageInfo UpdateProductCount(int id, int count, string token)
         {
             var request = new HttpRequestMessage
             {
@@ -32,7 +33,7 @@ namespace Backend.ShowcaseRequests
             };
             var response = Client.SendAsync(request).Result;
             var json = response.StatusCode != HttpStatusCode.OK ? null : response.Content.ReadAsStringAsync().Result;
-            return json == null ? null : JsonConvert.DeserializeObject<ProductInfo>(json);
+            return json == null ? null : JsonConvert.DeserializeObject<MessageInfo>(json);
         }
     }
 }

@@ -72,6 +72,7 @@ namespace Backend.Controllers
                         product.Description,
                         userProduct.ProductCount,
                         product.CategoryName,
+                        productId = product.Id,
                         product.Image
                     }).ToList();
 
@@ -131,8 +132,8 @@ namespace Backend.Controllers
 
                     if (product.Count - item.ProductId < 0) return _apiError.IncorrectProductCount;
 
-                    Transport.UpdateProductCount(item.ProductId, product.Count -= item.ProductCount, token);
-                    
+                    var messageInfo = Transport.UpdateProductCount(item.ProductId, product.Count -= item.ProductCount, token);
+                    if (messageInfo.Message.Length == 0) return _apiError.ProductNotFound;
                     // снятие денег с карты
 
                     db.PurchaseHistories.Add(new PurchaseHistory
