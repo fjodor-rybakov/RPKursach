@@ -22,7 +22,7 @@ namespace Backend.Controllers
         private static readonly IDatabase RedisCache = Instance.RedisCache;
         private static readonly ISubscriber Sub = RedisCache.Multiplexer.GetSubscriber();
         private readonly ApiError _apiError = new ApiError();
-        private const int CountAttempt = 10;
+        private const int CountAttempt = 50;
         private const int TimeMsAttempt = 500;
 
         [HttpPost("registration")]
