@@ -142,6 +142,7 @@ namespace Backend.Controllers
                         UserId = user.Id,
                         ProductCount = item.ProductCount
                     });
+                    db.Remove(userProducts);
                     db.SaveChanges();
                 }
 
