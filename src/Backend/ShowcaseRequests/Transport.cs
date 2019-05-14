@@ -32,7 +32,9 @@ namespace Backend.ShowcaseRequests
                     "application/json")
             };
             var response = Client.SendAsync(request).Result;
+            Console.WriteLine(response);
             var json = response.StatusCode != HttpStatusCode.OK ? null : response.Content.ReadAsStringAsync().Result;
+            Console.WriteLine(json);
             return json == null ? null : JsonConvert.DeserializeObject<MessageInfo>(json);
         }
     }

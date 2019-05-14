@@ -116,7 +116,7 @@ namespace Showcase.Controllers
             }
         }
 
-        [Authorize(Roles = ERoles.Administrator)]
+        [Authorize(Roles = ERoles.Customer + ", " + ERoles.Administrator)]
         [HttpPut("products/{id}")]
         public ActionResult<string> UpdateProduct(int id, [FromBody] ProductParam productParam)
         {
